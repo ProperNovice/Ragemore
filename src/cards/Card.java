@@ -1,43 +1,37 @@
 package cards;
 
-import enums.ESuit;
-import utils.ImageView;
 import utils.Interfaces.IEventHandlerAble;
 import utils.Interfaces.IImageViewAble;
 
 public abstract class Card implements IImageViewAble, IEventHandlerAble {
 
-	private ESuit eSuit = null;
-	private int strength = -1;
+	protected SideEnemy sideEnemy = null;
+	protected SideHero sideHero = null;
 
-	public Card(int cardNumber, ESuit eSuit, int strength) {
+	public Card() {
 
-		this.eSuit = eSuit;
-		this.strength = strength;
-
-		createImageView(cardNumber);
+		createSideEnemy();
+		createSideHero();
 
 	}
 
-	private void createImageView(int cardNumber) {
+	protected abstract void createSideEnemy();
 
-		String fileName = "cards/";
-		fileName += getFolderName();
-		fileName += cardNumber;
-		fileName += ".png";
+	protected abstract void createSideHero();
 
-		new ImageView(fileName, this);
+	protected abstract int cardNumber();
 
+	public final SideEnemy getSideEnemy() {
+		return this.sideEnemy;
 	}
 
-	public ESuit getESuit() {
-		return this.eSuit;
+	public final SideHero getSideHero() {
+		return this.sideHero;
 	}
 
-	public Integer getStrength() {
-		return this.strength;
-	}
+	@Override
+	public void handleMousePressed() {
 
-	protected abstract String getFolderName();
+	}
 
 }

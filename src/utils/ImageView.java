@@ -179,7 +179,7 @@ public class ImageView implements INode {
 		this.eventHandlerAble = object;
 
 		this.imageView.setOnMousePressed(
-				new EventHandler(() -> this.eventHandlerAble.handleMouseButtonPressed()));
+				new EventHandler(() -> this.eventHandlerAble.handleMousePressed()));
 
 		this.imageView.setOnMouseEntered(
 				new EventHandler(() -> this.eventHandlerAble.handleMouseEntered()));

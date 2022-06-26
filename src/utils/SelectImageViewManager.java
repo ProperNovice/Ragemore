@@ -118,7 +118,7 @@ public enum SelectImageViewManager {
 	}
 
 	public void handleMouseButtonPressedPrimary(SelectImageView selectImageView) {
-		getEventHandlerAble(selectImageView).handleMouseButtonPressed();
+		getEventHandlerAble(selectImageView).handleMousePressed();
 	}
 
 	public void handleMouseEntered(SelectImageView selectImageView) {

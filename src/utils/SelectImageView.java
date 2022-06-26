@@ -14,7 +14,7 @@ public class SelectImageView implements IImageViewAble, IEventHandlerAble {
 	}
 
 	@Override
-	public void handleMouseButtonPressed() {
+	public void handleMousePressed() {
 		SelectImageViewManager.INSTANCE.handleMouseButtonPressedPrimary(this);
 	}
 

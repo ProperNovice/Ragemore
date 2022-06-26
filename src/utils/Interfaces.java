@@ -7,7 +7,7 @@ public class Interfaces {
 
 	public interface IEventHandlerAble {
 
-		public default void handleMouseButtonPressed() {
+		public default void handleMousePressed() {
 
 		};
 
