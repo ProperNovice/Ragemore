@@ -2,6 +2,8 @@ package cards;
 
 import enums.ESuit;
 import utils.ArrayList;
+import utils.Image;
+import utils.Logger;
 
 public class SideHero {
 
@@ -9,13 +11,24 @@ public class SideHero {
 	private int strength = -1;
 	private boolean hasPlusIcon = false;
 	private ArrayList<ESuit> skills = null;
+	private Image image = null;
 
-	public SideHero(ESuit eSuit, int strength, boolean hasScull, ESuit... eSuits) {
+	public SideHero(int cardNumber, ESuit eSuit, int strength, boolean hasScull,
+			ArrayList<ESuit> skills) {
 
 		this.eSuit = eSuit;
 		this.strength = strength;
 		this.hasPlusIcon = hasScull;
-		this.skills = new ArrayList<>(eSuits);
+		this.skills = skills;
+
+		String path = "cards/hero/";
+
+		if (cardNumber < 10)
+			path += 0;
+
+		path += cardNumber;
+		path += ".png";
+		this.image = new Image(path);
 
 	}
 
@@ -33,6 +46,25 @@ public class SideHero {
 
 	public ArrayList<ESuit> getSkills() {
 		return this.skills;
+	}
+
+	public Image getImage() {
+		return this.image;
+	}
+
+	public void print() {
+
+		Logger.INSTANCE.log("printing side hero");
+		Logger.INSTANCE.log("suit -> " + this.eSuit);
+		Logger.INSTANCE.log("strength -> " + this.strength);
+		Logger.INSTANCE.log("has plus icon -> " + this.hasPlusIcon);
+		Logger.INSTANCE.log("skills");
+
+		for (ESuit eSuit : this.skills)
+			Logger.INSTANCE.log(eSuit);
+
+		Logger.INSTANCE.newLine();
+
 	}
 
 }
