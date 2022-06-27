@@ -2,6 +2,11 @@ package cards;
 
 import controllers.Ability;
 import enums.ESuit;
+import models.ACard;
+import models.SideEnemy;
+import models.SideEnemyBuilder;
+import models.SideHero;
+import models.SideHeroBuilder;
 
 public class Card08 extends ACard {
 

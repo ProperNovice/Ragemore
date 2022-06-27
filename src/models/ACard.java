@@ -1,5 +1,6 @@
-package cards;
+package models;
 
+import controllers.Credentials;
 import utils.Image;
 import utils.ImageView;
 import utils.Interfaces.IEventHandlerAble;
@@ -17,6 +18,7 @@ public abstract class ACard implements IImageViewAble, IEventHandlerAble {
 		this.sideHero = createSideHero();
 
 		new ImageView(this.sideEnemy.getImage(), this);
+		getImageView().setDimensions(Credentials.INSTANCE.dCard);
 		flipSideEnemy();
 
 	}

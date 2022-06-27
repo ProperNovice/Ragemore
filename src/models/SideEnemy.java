@@ -1,4 +1,4 @@
-package cards;
+package models;
 
 import enums.ESuit;
 import utils.Image;
