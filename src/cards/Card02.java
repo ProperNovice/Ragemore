@@ -1,5 +1,6 @@
 package cards;
 
+import controllers.Ability;
 import enums.ESuit;
 
 public class Card02 extends ACard {
@@ -7,6 +8,8 @@ public class Card02 extends ACard {
 	@Override
 	protected SideEnemy createSideEnemy() {
 		return new SideEnemyBuilder().cardNumber(2).eSuit(ESuit.CROWN).strength(2).hasScull(true)
+				.ability(() -> Ability.INSTANCE
+						.ifThereIsAtLeastOneCardInTheGraveyardAddThisCardToTheGraveyard())
 				.build();
 	}
 

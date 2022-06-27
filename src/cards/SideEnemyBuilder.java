@@ -7,6 +7,7 @@ public class SideEnemyBuilder {
 	private ESuit eSuit = null;
 	private int strength = -1, cardNumber = -1;
 	private boolean hasScull = false;
+	private Runnable ability = null;
 
 	public SideEnemyBuilder() {
 
@@ -32,8 +33,14 @@ public class SideEnemyBuilder {
 		return this;
 	}
 
+	public SideEnemyBuilder ability(Runnable ability) {
+		this.ability = ability;
+		return this;
+	}
+
 	public SideEnemy build() {
-		return new SideEnemy(this.cardNumber, this.eSuit, this.strength, this.hasScull);
+		return new SideEnemy(this.cardNumber, this.eSuit, this.strength, this.hasScull,
+				this.ability);
 	}
 
 }

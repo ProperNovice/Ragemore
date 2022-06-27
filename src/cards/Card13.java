@@ -1,5 +1,6 @@
 package cards;
 
+import controllers.Ability;
 import enums.ESuit;
 
 public class Card13 extends ACard {
@@ -7,7 +8,7 @@ public class Card13 extends ACard {
 	@Override
 	protected SideEnemy createSideEnemy() {
 		return new SideEnemyBuilder().cardNumber(13).eSuit(ESuit.ROAD).strength(2).hasScull(false)
-				.build();
+				.ability(() -> Ability.INSTANCE.shuffleTheDeck()).build();
 	}
 
 	@Override

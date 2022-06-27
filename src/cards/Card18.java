@@ -1,5 +1,6 @@
 package cards;
 
+import controllers.Ability;
 import enums.ESuit;
 
 public class Card18 extends ACard {
@@ -7,6 +8,7 @@ public class Card18 extends ACard {
 	@Override
 	protected SideEnemy createSideEnemy() {
 		return new SideEnemyBuilder().cardNumber(18).eSuit(ESuit.SUN).strength(3).hasScull(false)
+				.ability(() -> Ability.INSTANCE.killOneCardInTheQuestTableauWithTheLeastCards())
 				.build();
 	}
 

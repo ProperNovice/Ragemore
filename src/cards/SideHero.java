@@ -27,7 +27,7 @@ public class SideHero {
 			path += 0;
 
 		path += cardNumber;
-		path += ".png";
+		path += ".jpg";
 		this.image = new Image(path);
 
 	}

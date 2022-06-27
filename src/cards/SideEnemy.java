@@ -9,13 +9,16 @@ public class SideEnemy {
 	private ESuit eSuit = null;
 	private int strength = -1;
 	private boolean hasScull = false;
+	private Runnable ability = null;
 	private Image image = null;
 
-	public SideEnemy(int cardNumber, ESuit eSuit, int strength, boolean hasScull) {
+	public SideEnemy(int cardNumber, ESuit eSuit, int strength, boolean hasScull,
+			Runnable ability) {
 
 		this.eSuit = eSuit;
 		this.strength = strength;
 		this.hasScull = hasScull;
+		this.ability = ability;
 
 		String path = "cards/enemy/";
 
@@ -23,9 +26,13 @@ public class SideEnemy {
 			path += 0;
 
 		path += cardNumber;
-		path += ".png";
+		path += ".jpg";
 		this.image = new Image(path);
 
+	}
+
+	public void executeAbility() {
+		this.ability.run();
 	}
 
 	public ESuit getESuit() {
