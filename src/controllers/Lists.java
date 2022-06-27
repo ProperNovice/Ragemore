@@ -12,7 +12,7 @@ public enum Lists {
 	INSTANCE;
 
 	public final ArrayList<ListImageViewAbles<IImageViewAble>> lists = new ArrayList<ListImageViewAbles<IImageViewAble>>();
-	public ListImageViewAbles<ACard> deck;
+	public ListImageViewAbles<ACard> deck, encounter;
 
 	public void instantiate() {
 
@@ -22,6 +22,14 @@ public enum Lists {
 		this.deck.getListCredentials().coordinatesList = Credentials.INSTANCE.cDeck;
 		this.deck.getListCredentials().rearrangeTypeEnum = RearrangeTypeEnum.STATIC;
 		this.deck.getListCredentials().layerZListEnum = LayerZListEnum.TO_FRONT_FIRST_IMAGEVIEW;
+
+		// encounter
+
+		this.encounter = new ListImageViewAbles<>();
+		this.encounter.getListCredentials().coordinatesList = Credentials.INSTANCE.cEncounter;
+		this.encounter.getListCredentials().rearrangeTypeEnum = RearrangeTypeEnum.STATIC;
+		this.encounter
+				.getListCredentials().layerZListEnum = LayerZListEnum.TO_FRONT_FIRST_IMAGEVIEW;
 
 	}
 
