@@ -23,6 +23,7 @@ public enum Sleep {
 
 		this.sleepStart = System.currentTimeMillis();
 		this.sleeping.start();
+		CursorFX.INSTANCE.setWait();
 
 		Platform.enterNestedEventLoop(this.lockObject);
 
@@ -31,6 +32,7 @@ public enum Sleep {
 	private void awake() {
 
 		this.sleeping.stop();
+		CursorFX.INSTANCE.setDefault();
 
 		Logger.INSTANCE.logNewLine("awake");
 
