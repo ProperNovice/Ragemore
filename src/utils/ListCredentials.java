@@ -16,7 +16,6 @@ public class ListCredentials {
 			directionEnumVertical = DirectionEnum.DOWN;
 	public boolean showListSize = false;
 	public Vector2 coordinatesList = new Vector2(0, 0),
-			gapBetweenComponents = new Vector2(Credentials.INSTANCE.dGapBetweenComponents.x,
-					Credentials.INSTANCE.dGapBetweenComponents.y);
+			gapBetweenComponents = Credentials.INSTANCE.dGapBetweenComponents.clone();
 
 }

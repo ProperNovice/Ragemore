@@ -20,7 +20,7 @@ public enum Credentials {
 	public ArrayList<Class<?>> lineCastExcludeList = new ArrayList<Class<?>>();
 	public RearrangeTypeEnum rearrangeTypeEnumText = RearrangeTypeEnum.LINEAR;
 	public Vector2 dCard;
-	public Vector2 cDeck, cEncounter;
+	public Vector2 cDeck, cEncounter, cQuestLeft, cQuestRight;
 
 	private Credentials() {
 
@@ -49,7 +49,7 @@ public enum Credentials {
 		// c deck
 
 		x = this.dFrame.x / 2;
-		x -= this.dGapBetweenComponents.x;
+		x -= 2 * this.dGapBetweenComponents.x;
 		x -= this.dCard.x;
 		y = this.gapBetweenBorders;
 		this.cDeck = new Vector2(x, y);
@@ -57,10 +57,25 @@ public enum Credentials {
 		// c encounter
 
 		x = this.dFrame.x / 2;
-		x += this.dGapBetweenComponents.x;
-		x += this.dCard.x;
-		y = this.gapBetweenBorders;
+		x += 2 * this.dGapBetweenComponents.x;
+		y = this.cDeck.y;
 		this.cEncounter = new Vector2(x, y);
+
+		// c quest left
+
+		x = this.cDeck.x;
+		y = this.gapBetweenBorders;
+		y += this.dCard.y;
+		y += this.dGapBetweenComponents.y;
+		this.cQuestLeft = new Vector2(x, y);
+
+		// c quest right
+
+		x = this.cEncounter.x;
+		y = this.gapBetweenBorders;
+		y += this.dCard.y;
+		y += this.dGapBetweenComponents.y;
+		this.cQuestRight = new Vector2(x, y);
 
 	}
 

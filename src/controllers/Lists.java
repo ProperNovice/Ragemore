@@ -2,6 +2,7 @@ package controllers;
 
 import models.ACard;
 import utils.ArrayList;
+import utils.Enums.DirectionEnum;
 import utils.Enums.LayerZListEnum;
 import utils.Enums.RearrangeTypeEnum;
 import utils.Interfaces.IImageViewAble;
@@ -12,7 +13,7 @@ public enum Lists {
 	INSTANCE;
 
 	public final ArrayList<ListImageViewAbles<IImageViewAble>> lists = new ArrayList<ListImageViewAbles<IImageViewAble>>();
-	public ListImageViewAbles<ACard> deck, encounter;
+	public ListImageViewAbles<ACard> deck, encounter, questLeft, questRight;
 
 	public void instantiate() {
 
@@ -30,6 +31,27 @@ public enum Lists {
 		this.encounter.getListCredentials().rearrangeTypeEnum = RearrangeTypeEnum.STATIC;
 		this.encounter
 				.getListCredentials().layerZListEnum = LayerZListEnum.TO_FRONT_FIRST_IMAGEVIEW;
+
+		// quest left
+
+		this.questLeft = new ListImageViewAbles<>();
+		this.questLeft.getListCredentials().coordinatesList = Credentials.INSTANCE.cQuestLeft;
+		this.questLeft
+				.getListCredentials().layerZListEnum = LayerZListEnum.TO_FRONT_FIRST_IMAGEVIEW;
+		this.questLeft.getListCredentials().gapBetweenComponents.x = Credentials.INSTANCE.dCard.x
+				* 0.3;
+		this.questLeft.getListCredentials().directionEnumHorizontal = DirectionEnum.LEFT;
+		this.questLeft.getArrayList().setCapacity(3);
+
+		// quest right
+
+		this.questRight = new ListImageViewAbles<>();
+		this.questRight.getListCredentials().coordinatesList = Credentials.INSTANCE.cQuestRight;
+		this.questRight
+				.getListCredentials().layerZListEnum = LayerZListEnum.TO_BACK_FIRST_IMAGEVIEW;
+		this.questRight.getListCredentials().gapBetweenComponents = this.questLeft
+				.getListCredentials().gapBetweenComponents;
+		this.questRight.getArrayList().setCapacity(3);
 
 	}
 
