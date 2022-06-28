@@ -49,7 +49,7 @@ public enum Credentials {
 		// c deck
 
 		x = this.dFrame.x / 2;
-		x -= 2 * this.dGapBetweenComponents.x;
+		x -= this.dGapBetweenComponents.x;
 		x -= this.dCard.x;
 		y = this.gapBetweenBorders;
 		this.cDeck = new Vector2(x, y);
@@ -57,7 +57,7 @@ public enum Credentials {
 		// c encounter
 
 		x = this.dFrame.x / 2;
-		x += 2 * this.dGapBetweenComponents.x;
+		x += this.dGapBetweenComponents.x;
 		y = this.cDeck.y;
 		this.cEncounter = new Vector2(x, y);
 
