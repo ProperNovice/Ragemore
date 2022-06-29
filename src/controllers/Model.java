@@ -7,7 +7,7 @@ public enum Model {
 
 	INSTANCE;
 
-	public void drawEncounter() {
+	public void drawEncounterLock() {
 
 		ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
 		Lists.INSTANCE.encounter.getArrayList().addLast(card);
@@ -15,7 +15,7 @@ public enum Model {
 
 	}
 
-	public void startGame() {
+	public void startGameLock() {
 
 		// load lists
 
@@ -29,9 +29,25 @@ public enum Model {
 		setUpQuest(Lists.INSTANCE.questLeft, 3);
 		setUpQuest(Lists.INSTANCE.questRight, 2);
 
+		// set up party
+
+		setUpPartyLock();
+
 		// draw encounter
 
-		drawEncounter();
+		drawEncounterLock();
+
+	}
+
+	private void setUpPartyLock() {
+
+		for (int counter = 1; counter <= 3; counter++) {
+
+			ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
+			card.flipSideHero();
+			Party.INSTANCE.addCardLock(card);
+
+		}
 
 	}
 

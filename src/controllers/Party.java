@@ -11,14 +11,14 @@ import utils.ListImageViewAbles;
 import utils.Lock;
 import utils.Vector2;
 
-public enum Hand {
+public enum Party {
 
 	INSTANCE;
 
 	private ArrayList<ListImageViewAbles<ACard>> lists = new ArrayList<>();
 	private HashMap<Integer, ArrayList<Vector2>> coordinates = new HashMap<>();
 
-	private Hand() {
+	private Party() {
 
 		createCoordinates();
 
@@ -78,7 +78,7 @@ public enum Hand {
 
 	}
 
-	public void addCard(ACard card) {
+	public void addCardLock(ACard card) {
 
 		ESuit eSuitCardToAdd = card.getSideHero().getESuit();
 		boolean added = false;
