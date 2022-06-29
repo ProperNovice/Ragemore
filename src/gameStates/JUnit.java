@@ -11,7 +11,7 @@ public class JUnit extends AGameState {
 	@Override
 	public void execute() {
 
-		Model.INSTANCE.startGame();
+//		Model.INSTANCE.startGame();
 
 		EText.CONTINUE.show();
 

@@ -36,75 +36,45 @@ public enum Hand {
 
 		// 1 column
 
-		// 1
-
 		x = Credentials.INSTANCE.dFrame.x / 2;
-		this.coordinates.getValue(1).addLast(new Vector2(x, y));
+		addCoordinates(1, new Vector2(x, y));
 
 		// 2 columns
 
-		// 1
-
 		x = Credentials.INSTANCE.dFrame.x / 2;
 		x -= Credentials.INSTANCE.dGapBetweenComponents.x / 2;
 		x -= Credentials.INSTANCE.dCard.x / 2;
-		this.coordinates.getValue(2).addLast(new Vector2(x, y));
-
-		// 2
-
-		x += Credentials.INSTANCE.dGapBetweenComponents.x;
-		x += Credentials.INSTANCE.dCard.x;
-		this.coordinates.getValue(2).addLast(new Vector2(x, y));
+		addCoordinates(2, new Vector2(x, y));
 
 		// 3 columns
 
-		// 1
-
 		x = Credentials.INSTANCE.dFrame.x / 2;
 		x -= Credentials.INSTANCE.dGapBetweenComponents.x;
 		x -= Credentials.INSTANCE.dCard.x;
-		this.coordinates.getValue(3).addLast(new Vector2(x, y));
+		addCoordinates(3, new Vector2(x, y));
 
-		// 2
-
-		x += Credentials.INSTANCE.dGapBetweenComponents.x;
-		x += Credentials.INSTANCE.dCard.x;
-		this.coordinates.getValue(3).addLast(new Vector2(x, y));
-
-		// 3
-
-		x += Credentials.INSTANCE.dGapBetweenComponents.x;
-		x += Credentials.INSTANCE.dCard.x;
-		this.coordinates.getValue(3).addLast(new Vector2(x, y));
-		
 		// 4 columns
-
-		// 1
 
 		x = Credentials.INSTANCE.dFrame.x / 2;
 		x -= Credentials.INSTANCE.dGapBetweenComponents.x / 2;
 		x -= Credentials.INSTANCE.dGapBetweenComponents.x;
 		x -= Credentials.INSTANCE.dCard.x / 2;
 		x -= Credentials.INSTANCE.dCard.x;
-		this.coordinates.getValue(4).addLast(new Vector2(x, y));
+		addCoordinates(4, new Vector2(x, y));
 
-		// 2
+	}
 
-		x += Credentials.INSTANCE.dGapBetweenComponents.x;
-		x += Credentials.INSTANCE.dCard.x;
-		this.coordinates.getValue(4).addLast(new Vector2(x, y));
-		
-		// 3
-		
-		x += Credentials.INSTANCE.dGapBetweenComponents.x;
-		x += Credentials.INSTANCE.dCard.x;
-		this.coordinates.getValue(4).addLast(new Vector2(x, y));
-		
-		// 4
-		
-		x += Credentials.INSTANCE.dGapBetweenComponents.x;
-		x += Credentials.INSTANCE.dCard.x;
-		this.coordinates.getValue(4).addLast(new Vector2(x, y));
+	private void addCoordinates(int number, Vector2 coordinates) {
+
+		for (int counter = 1; counter <= number; counter++) {
+
+			this.coordinates.getValue(number).addLast(coordinates);
+
+			coordinates = coordinates.clone();
+			coordinates.x += Credentials.INSTANCE.dGapBetweenComponents.x;
+			coordinates.x += Credentials.INSTANCE.dCard.x;
+
+		}
 
 	}
 
