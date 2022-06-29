@@ -22,14 +22,14 @@ public class HashMap<K, V> implements Iterable<K> {
 	}
 
 	public void removeKey(K key) {
-		remove(this.keys.indexOf(key));
+		removeEntry(this.keys.indexOf(key));
 	}
 
 	public void removeValue(V value) {
-		remove(this.values.indexOf(value));
+		removeEntry(this.values.indexOf(value));
 	}
 
-	private void remove(int index) {
+	private void removeEntry(int index) {
 
 		this.keys.remove(index);
 		this.values.remove(index);

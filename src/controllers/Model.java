@@ -2,7 +2,6 @@ package controllers;
 
 import models.ACard;
 import utils.ListImageViewAbles;
-import utils.Sleep;
 
 public enum Model {
 
@@ -31,7 +30,7 @@ public enum Model {
 		setUpQuest(Lists.INSTANCE.questRight, 2);
 
 		// draw encounter
-		
+
 		drawEncounter();
 
 	}
@@ -58,7 +57,6 @@ public enum Model {
 
 			quest.getArrayList().addLast(card);
 			quest.animateSynchronousLock();
-			Sleep.INSTANCE.sleep(150);
 
 		}
 

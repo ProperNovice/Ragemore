@@ -42,7 +42,7 @@ public enum Credentials {
 		y = this.dFrame.y;
 		y -= 2 * this.gapBetweenBorders;
 		y -= 2 * this.dGapBetweenComponents.y;
-		y /= 3;
+		y /= 3.4;
 		x = (y / 437) * 312;
 		this.dCard = new Vector2(x, y);
 

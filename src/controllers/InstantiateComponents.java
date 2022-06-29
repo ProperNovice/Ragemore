@@ -45,6 +45,8 @@ public enum InstantiateComponents {
 		Lists.INSTANCE.deck.getArrayList().addLast(new Card18());
 
 		Lists.INSTANCE.deck.getArrayList().saveOriginal();
+		Lists.INSTANCE.deck.getArrayList().shuffle();
+		Lists.INSTANCE.deck.relocateImageViews();
 
 	}
 
