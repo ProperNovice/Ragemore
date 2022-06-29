@@ -7,6 +7,24 @@ public enum Model {
 
 	INSTANCE;
 
+	public boolean canExplore() {
+
+		return true;
+
+	}
+
+	public boolean canRecruit() {
+
+		return true;
+
+	}
+
+	public boolean canFight() {
+
+		return true;
+
+	}
+
 	public void drawEncounterLock() {
 
 		ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();

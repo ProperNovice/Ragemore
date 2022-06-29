@@ -11,6 +11,10 @@ public enum EText {
 	YOU_WON("You won", TextTypeEnum.INDICATOR),
 	YOU_LOST("You lost", TextTypeEnum.INDICATOR),
 	VOID("", TextTypeEnum.INDICATOR),
+	DRAW_ENCOUNTER("Draw encounter", TextTypeEnum.OPTION),
+	EXPLORE("Explore", TextTypeEnum.OPTION),
+	RECRUIT("Recruit", TextTypeEnum.OPTION),
+	FIGHT("Fight", TextTypeEnum.OPTION),
 
 	;
 

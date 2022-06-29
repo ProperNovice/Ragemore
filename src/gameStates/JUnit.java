@@ -1,13 +1,13 @@
 package gameStates;
 
-import controllers.Model;
+import utils.Flow;
 
 public class JUnit extends AGameState {
 
 	@Override
 	public void execute() {
 
-		Model.INSTANCE.startGameLock();
+		Flow.INSTANCE.executeGameState(StartNewTurn.class);
 
 	}
 
