@@ -26,16 +26,12 @@ public enum Model {
 
 		// set up quests
 
-		setUpQuest(Lists.INSTANCE.questLeft, 3);
-		setUpQuest(Lists.INSTANCE.questRight, 2);
+		setUpQuest(Lists.INSTANCE.questLeft, 3, true);
+		setUpQuest(Lists.INSTANCE.questRight, 2, false);
 
 		// set up party
 
 		setUpPartyLock();
-
-		// draw encounter
-
-		drawEncounterLock();
 
 	}
 
@@ -51,7 +47,7 @@ public enum Model {
 
 	}
 
-	private void setUpQuest(ListImageViewAbles<ACard> quest, int numberOfCards) {
+	private void setUpQuest(ListImageViewAbles<ACard> quest, int numberOfCards, boolean left) {
 
 		while (quest.getArrayList().size() < numberOfCards) {
 
@@ -62,7 +58,11 @@ public enum Model {
 			if (quest.getArrayList().isEmpty())
 				addCard = true;
 
-			else if (!card.getSideEnemy().getESuit()
+			else if (left && !card.getSideEnemy().getESuit()
+					.equals(quest.getArrayList().getFirst().getSideEnemy().getESuit()))
+				addCard = true;
+
+			else if (!left && !card.getSideEnemy().getESuit()
 					.equals(quest.getArrayList().getLast().getSideEnemy().getESuit()))
 				addCard = true;
 
@@ -71,7 +71,11 @@ public enum Model {
 
 			Lists.INSTANCE.deck.getArrayList().remove(card);
 
-			quest.getArrayList().addLast(card);
+			if (left)
+				quest.getArrayList().addFirst(card);
+			else
+				quest.getArrayList().addLast(card);
+
 			quest.animateSynchronousLock();
 
 		}

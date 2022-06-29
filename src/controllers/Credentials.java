@@ -10,7 +10,7 @@ public enum Credentials {
 
 	INSTANCE;
 
-	public final String primaryStageTitle = "JavaFX", numbersImageViewColor = "black";
+	public final String primaryStageTitle = "Ragemore", numbersImageViewColor = "black";
 	public final boolean colliderVisibility = true;
 	public final double gapBetweenBorders = 25, textHeight = 50,
 			selectEventHandlerAbleDimension = 100, listQuantityRatioDimensions = 0.5,
