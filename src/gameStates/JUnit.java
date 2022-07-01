@@ -14,9 +14,9 @@ public class JUnit extends AGameState {
 		Model.INSTANCE.drawEncounter();
 
 		addCardsToQuests(3, 2);
-		addCardsToParty(3);
+		addCardsToParty(8);
 
-		Flow.INSTANCE.getFlow().addLast(ChooseAction.class);
+		Flow.INSTANCE.getFlow().addLast(ActionExplore.class);
 		Flow.INSTANCE.proceed();
 
 	}

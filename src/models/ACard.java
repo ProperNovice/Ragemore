@@ -19,7 +19,15 @@ public abstract class ACard implements IImageViewAble, IEventHandlerAble {
 		this.sideHero = createSideHero();
 
 		new ImageView(this.sideEnemy.getImage(), this);
+
 		getImageView().setDimensions(Credentials.INSTANCE.dCard);
+
+		getImageView().setSelectImageViewAbleRatioDimensions(
+				Credentials.INSTANCE.selectCardRatioDimension);
+
+		getImageView()
+				.setSelectImageViewAbleRatioPosition(Credentials.INSTANCE.selectCardRatioPosition);
+
 		flipSideEnemy();
 
 	}

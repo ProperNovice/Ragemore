@@ -21,6 +21,8 @@ public enum Credentials {
 	public RearrangeTypeEnum rearrangeTypeEnumText = RearrangeTypeEnum.LINEAR;
 	public Vector2 dCard;
 	public Vector2 cDeck, cEncounter, cQuestLeft, cQuestRight;
+	public Vector2 selectCardRatioPosition = new Vector2(0.2, 0.88);
+	public double selectCardRatioDimension = 0.25;
 
 	private Credentials() {
 

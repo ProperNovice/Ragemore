@@ -56,9 +56,17 @@ public abstract class AGameState {
 		else if (Lists.INSTANCE.encounter.getArrayList().contains(card))
 			handleCardPressedEncounter(card);
 
-		else if (Lists.INSTANCE.questLeft.getArrayList().contains(card)
-				|| Lists.INSTANCE.questRight.getArrayList().contains(card))
+		else if (Lists.INSTANCE.questLeft.getArrayList().contains(card)) {
+
 			handleCardPressedQuest(card);
+			handleCardPressedQuestLeft(card);
+
+		} else if (Lists.INSTANCE.questRight.getArrayList().contains(card)) {
+
+			handleCardPressedQuest(card);
+			handleCardPressedQuestRight(card);
+
+		}
 
 		else if (Party.INSTANCE.contains(card))
 			handleCardPressedParty(card);
@@ -74,6 +82,14 @@ public abstract class AGameState {
 	}
 
 	protected void handleCardPressedQuest(ACard card) {
+
+	}
+
+	protected void handleCardPressedQuestLeft(ACard card) {
+
+	}
+
+	protected void handleCardPressedQuestRight(ACard card) {
 
 	}
 

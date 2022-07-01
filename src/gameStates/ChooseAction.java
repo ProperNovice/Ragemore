@@ -10,9 +10,9 @@ public class ChooseAction extends AGameState {
 	public void execute() {
 
 		EText.CHOOSE_ACTION.show();
-		EText.EXPLORE.show();
-		EText.RECRUIT.show();
-		EText.FIGHT.show();
+		EText.EXPLORE_OPTION.show();
+		EText.RECRUIT_OPTION.show();
+		EText.FIGHT_OPTION.show();
 		EText.PASS.show();
 
 	}
@@ -24,15 +24,15 @@ public class ChooseAction extends AGameState {
 
 		switch (eText) {
 
-		case EXPLORE:
+		case EXPLORE_OPTION:
 			gameState = ActionExplore.class;
 			break;
 
-		case RECRUIT:
+		case RECRUIT_OPTION:
 			gameState = ActionRecruit.class;
 			break;
 
-		case FIGHT:
+		case FIGHT_OPTION:
 			gameState = ActionFight.class;
 			break;
 
