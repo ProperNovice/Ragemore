@@ -7,40 +7,26 @@ public enum Model {
 
 	INSTANCE;
 
-	public boolean canExplore() {
-
-		return true;
-
-	}
-
-	public boolean canRecruit() {
-
-		return true;
-
-	}
-
-	public boolean canFight() {
-
-		return true;
-
-	}
-
-	public void drawEncounterLock() {
+	public void drawEncounter() {
 
 		ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
 		Lists.INSTANCE.encounter.getArrayList().addLast(card);
-		Lists.INSTANCE.encounter.animateSynchronousLock();
+		Lists.INSTANCE.encounter.relocateImageViews();
 
 	}
 
-	public void startGameLock() {
+	public void startGame() {
 
 		// load lists
 
 		Lists.INSTANCE.loadListsOriginal();
+		Party.INSTANCE.clearCards();
 
 		Lists.INSTANCE.deck.getArrayList().shuffle();
 		Lists.INSTANCE.deck.relocateImageViews();
+
+		for (ACard card : Lists.INSTANCE.deck)
+			card.flipSideEnemy();
 
 		// set up quests
 
@@ -59,7 +45,7 @@ public enum Model {
 
 			ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
 			card.flipSideHero();
-			Party.INSTANCE.addCardLock(card);
+			Party.INSTANCE.addCard(card);
 
 		}
 
@@ -94,9 +80,9 @@ public enum Model {
 			else
 				quest.getArrayList().addLast(card);
 
-			quest.animateSynchronousLock();
-
 		}
+
+		quest.relocateImageViews();
 
 	}
 

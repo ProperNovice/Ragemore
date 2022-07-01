@@ -2,16 +2,16 @@ package utils;
 
 import utils.Interfaces.ISaveLoadStateAble;
 
-public class Number implements ISaveLoadStateAble {
+public class IntegerNumber implements ISaveLoadStateAble {
 
 	private int numberCurrent, numberOriginal, numberState;
 
-	public Number(int number) {
+	public IntegerNumber(int number) {
 		this.numberCurrent = number;
 		saveOriginal();
 	}
 
-	public Number() {
+	public IntegerNumber() {
 		this(0);
 	}
 

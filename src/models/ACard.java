@@ -1,6 +1,7 @@
 package models;
 
 import controllers.Credentials;
+import utils.Flow;
 import utils.Image;
 import utils.ImageView;
 import utils.Interfaces.IEventHandlerAble;
@@ -56,7 +57,7 @@ public abstract class ACard implements IImageViewAble, IEventHandlerAble {
 
 	@Override
 	public void handleMousePressed() {
-		print();
+		Flow.INSTANCE.getGameStateCurrent().handleCardPressed(this);
 	}
 
 }

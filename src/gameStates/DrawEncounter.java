@@ -16,7 +16,7 @@ public class DrawEncounter extends AGameState {
 	@Override
 	protected void executeTextOption(EText eText) {
 
-		Model.INSTANCE.drawEncounterLock();
+		Model.INSTANCE.drawEncounter();
 		Flow.INSTANCE.proceed();
 
 	}

@@ -8,7 +8,6 @@ import utils.Enums.LayerZListEnum;
 import utils.Enums.RelocateTypeEnum;
 import utils.HashMap;
 import utils.ListImageViewAbles;
-import utils.Lock;
 import utils.Vector2;
 
 public enum Party {
@@ -78,7 +77,7 @@ public enum Party {
 
 	}
 
-	public void addCardLock(ACard card) {
+	public void addCard(ACard card) {
 
 		ESuit eSuitCardToAdd = card.getSideHero().getESuit();
 		boolean added = false;
@@ -103,7 +102,7 @@ public enum Party {
 
 		}
 
-		relocate();
+		rearrange();
 
 	}
 
@@ -123,11 +122,11 @@ public enum Party {
 
 		}
 
-		relocate();
+		rearrange();
 
 	}
 
-	private void relocate() {
+	private void rearrange() {
 
 		for (ListImageViewAbles<ACard> list : this.lists) {
 
@@ -140,11 +139,11 @@ public enum Party {
 			list.getListCredentials().layerZListEnum = LayerZListEnum.TO_BACK_FIRST_IMAGEVIEW;
 			list.getListCredentials().relocateTypeEnum = RelocateTypeEnum.CENTER;
 			list.getListCredentials().gapBetweenComponents.y = 0.2 * Credentials.INSTANCE.dCard.y;
-			list.animateSynchronous();
 
 		}
 
-		Lock.INSTANCE.lock();
+		for (ListImageViewAbles<ACard> list : this.lists)
+			list.relocateImageViews();
 
 	}
 
@@ -156,6 +155,21 @@ public enum Party {
 
 		return false;
 
+	}
+
+	public ArrayList<ACard> getAllCards() {
+
+		ArrayList<ACard> cards = new ArrayList<>();
+
+		for (ListImageViewAbles<ACard> list : this.lists)
+			cards.addAllLast(list.getArrayList());
+
+		return cards;
+
+	}
+
+	public void clearCards() {
+		this.lists.clear();
 	}
 
 }

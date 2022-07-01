@@ -33,10 +33,6 @@ public enum Credentials {
 		this.dGapBetweenComponents = new Vector2(4, 4);
 		this.dGapBetweenComponentsLineCast = this.dGapBetweenComponents;
 
-		// c text panel
-
-		this.cTextPanel = new Vector2(x, y);
-
 		// d card
 
 		y = this.dFrame.y;
@@ -76,6 +72,16 @@ public enum Credentials {
 		y += this.dCard.y;
 		y += this.dGapBetweenComponents.y;
 		this.cQuestRight = new Vector2(x, y);
+
+		// c text panel
+
+		x = this.cEncounter.x;
+		x += this.dCard.x;
+		x += 4 * this.dGapBetweenComponents.x;
+		y = this.cEncounter.y;
+		y += this.dCard.y / 2;
+		this.cTextPanel = new Vector2(x, y);
+		this.rearrangeTypeEnumText = RearrangeTypeEnum.PIVOT;
 
 	}
 

@@ -5,16 +5,13 @@ import utils.Text;
 
 public enum EText {
 
-	START_GAME("Start game", TextTypeEnum.OPTION),
-	CONTINUE("Continue", TextTypeEnum.OPTION),
-	RESTART("Restart", TextTypeEnum.OPTION),
-	YOU_WON("You won", TextTypeEnum.INDICATOR),
-	YOU_LOST("You lost", TextTypeEnum.INDICATOR),
-	VOID("", TextTypeEnum.INDICATOR),
+	START_GAME("Start game", TextTypeEnum.OPTION), CONTINUE("Continue", TextTypeEnum.OPTION),
+	RESTART("Restart", TextTypeEnum.OPTION), YOU_WON("You won", TextTypeEnum.INDICATOR),
+	YOU_LOST("You lost", TextTypeEnum.INDICATOR), VOID("", TextTypeEnum.INDICATOR),
 	DRAW_ENCOUNTER("Draw encounter", TextTypeEnum.OPTION),
-	EXPLORE("Explore", TextTypeEnum.OPTION),
-	RECRUIT("Recruit", TextTypeEnum.OPTION),
-	FIGHT("Fight", TextTypeEnum.OPTION),
+	CHOOSE_ACTION("Choose action", TextTypeEnum.INDICATOR), EXPLORE("Explore", TextTypeEnum.OPTION),
+	RECRUIT("Recruit", TextTypeEnum.OPTION), FIGHT("Fight", TextTypeEnum.OPTION),
+	PASS("Pass", TextTypeEnum.OPTION),
 
 	;
 
@@ -35,7 +32,7 @@ public enum EText {
 	public void showAdditionally(String string) {
 		Text.INSTANCE.showText(this, getString() + string);
 	}
-	
+
 	public void showAdditionally(int integer) {
 		showAdditionally(Integer.toString(integer));
 	}

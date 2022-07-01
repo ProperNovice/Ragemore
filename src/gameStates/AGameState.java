@@ -1,7 +1,10 @@
 package gameStates;
 
+import controllers.Lists;
+import controllers.Party;
 import enums.EText;
 import javafx.scene.input.KeyCode;
+import models.ACard;
 import utils.KeyCodeHandler;
 import utils.Logger;
 import utils.Text;
@@ -43,6 +46,39 @@ public abstract class AGameState {
 
 	protected final void concealText() {
 		Text.INSTANCE.concealText();
+	}
+
+	public final void handleCardPressed(ACard card) {
+
+		if (Lists.INSTANCE.deck.getArrayList().contains(card))
+			handleCardPressedDeck(card);
+
+		else if (Lists.INSTANCE.encounter.getArrayList().contains(card))
+			handleCardPressedEncounter(card);
+
+		else if (Lists.INSTANCE.questLeft.getArrayList().contains(card)
+				|| Lists.INSTANCE.questRight.getArrayList().contains(card))
+			handleCardPressedQuest(card);
+
+		else if (Party.INSTANCE.contains(card))
+			handleCardPressedParty(card);
+
+	}
+
+	protected void handleCardPressedDeck(ACard card) {
+
+	}
+
+	protected void handleCardPressedEncounter(ACard card) {
+
+	}
+
+	protected void handleCardPressedQuest(ACard card) {
+
+	}
+
+	protected void handleCardPressedParty(ACard card) {
+
 	}
 
 }
