@@ -1,7 +1,7 @@
 package cards;
 
-import controllers.Ability;
 import enums.ESuit;
+import gameStatesAbilities.MoveTopCardToTheBottom;
 import models.ACard;
 import models.SideEnemy;
 import models.SideEnemyBuilder;
@@ -13,7 +13,7 @@ public class Card06 extends ACard {
 	@Override
 	protected SideEnemy createSideEnemy() {
 		return new SideEnemyBuilder().cardNumber(6).eSuit(ESuit.CROSS).strength(1).hasScull(false)
-				.ability(() -> Ability.INSTANCE.moveTopCardToTheBottom()).build();
+				.ability(MoveTopCardToTheBottom.class).build();
 	}
 
 	@Override

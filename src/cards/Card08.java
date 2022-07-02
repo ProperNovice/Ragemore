@@ -1,7 +1,7 @@
 package cards;
 
-import controllers.Ability;
 import enums.ESuit;
+import gameStatesAbilities.GainNextCardIfItIsCrownOrSun;
 import models.ACard;
 import models.SideEnemy;
 import models.SideEnemyBuilder;
@@ -13,7 +13,7 @@ public class Card08 extends ACard {
 	@Override
 	protected SideEnemy createSideEnemy() {
 		return new SideEnemyBuilder().cardNumber(8).eSuit(ESuit.CROSS).strength(2).hasScull(false)
-				.ability(() -> Ability.INSTANCE.gainNextCardIfItIsCrownOrSun()).build();
+				.ability(GainNextCardIfItIsCrownOrSun.class).build();
 	}
 
 	@Override

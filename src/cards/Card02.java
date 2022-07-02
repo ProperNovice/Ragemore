@@ -1,7 +1,7 @@
 package cards;
 
-import controllers.Ability;
 import enums.ESuit;
+import gameStatesAbilities.IfThereIsAtLeastOneCardInTheGraveyardAddThisCardToTheGraveyard;
 import models.ACard;
 import models.SideEnemy;
 import models.SideEnemyBuilder;
@@ -13,8 +13,7 @@ public class Card02 extends ACard {
 	@Override
 	protected SideEnemy createSideEnemy() {
 		return new SideEnemyBuilder().cardNumber(2).eSuit(ESuit.CROWN).strength(2).hasScull(true)
-				.ability(() -> Ability.INSTANCE
-						.ifThereIsAtLeastOneCardInTheGraveyardAddThisCardToTheGraveyard())
+				.ability(IfThereIsAtLeastOneCardInTheGraveyardAddThisCardToTheGraveyard.class)
 				.build();
 	}
 

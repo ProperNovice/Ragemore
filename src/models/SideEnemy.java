@@ -1,6 +1,7 @@
 package models;
 
 import enums.ESuit;
+import gameStates.AGameState;
 import utils.Image;
 import utils.Logger;
 
@@ -9,11 +10,11 @@ public class SideEnemy {
 	private ESuit eSuit = null;
 	private int strength = -1;
 	private boolean hasScull = false;
-	private Runnable ability = null;
+	private Class<? extends AGameState> ability = null;
 	private Image image = null;
 
 	public SideEnemy(int cardNumber, ESuit eSuit, int strength, boolean hasScull,
-			Runnable ability) {
+			Class<? extends AGameState> ability) {
 
 		this.eSuit = eSuit;
 		this.strength = strength;
@@ -31,8 +32,8 @@ public class SideEnemy {
 
 	}
 
-	public void executeAbility() {
-		this.ability.run();
+	public Class<? extends AGameState> executeAbility() {
+		return this.ability;
 	}
 
 	public ESuit getESuit() {

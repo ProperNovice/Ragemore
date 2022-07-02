@@ -1,7 +1,7 @@
 package cards;
 
-import controllers.Ability;
 import enums.ESuit;
+import gameStatesAbilities.PlayNextCard;
 import models.ACard;
 import models.SideEnemy;
 import models.SideEnemyBuilder;
@@ -13,7 +13,7 @@ public class Card15 extends ACard {
 	@Override
 	protected SideEnemy createSideEnemy() {
 		return new SideEnemyBuilder().cardNumber(15).eSuit(ESuit.SUN).strength(1).hasScull(true)
-				.ability(() -> Ability.INSTANCE.playNextCard()).build();
+				.ability(PlayNextCard.class).build();
 	}
 
 	@Override
