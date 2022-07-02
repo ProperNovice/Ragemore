@@ -1,11 +1,50 @@
 package controllers;
 
+import enums.ESuit;
 import models.ACard;
+import utils.ArrayList;
 import utils.ListImageViewAbles;
 
 public enum Model {
 
 	INSTANCE;
+
+	public void rearrangeQuestsFinished() {
+
+		ArrayList<ESuit> eSuits = new ArrayList<>();
+
+		// create suits list
+
+		for (ACard card : Lists.INSTANCE.questsFinished) {
+
+			ESuit eSuit = card.getSideEnemy().getESuit();
+
+			if (!eSuits.contains(eSuit))
+				eSuits.addLast(eSuit);
+
+		}
+
+		// rearrange list
+
+		for (ESuit eSuit : eSuits) {
+
+			for (ACard card : Lists.INSTANCE.questsFinished.getArrayList().clone()) {
+
+				ESuit eSuitCard = card.getSideEnemy().getESuit();
+
+				if (!eSuitCard.equals(eSuit))
+					continue;
+
+				Lists.INSTANCE.questsFinished.getArrayList().remove(card);
+				Lists.INSTANCE.questsFinished.getArrayList().addLast(card);
+
+			}
+
+		}
+		
+		Lists.INSTANCE.questsFinished.relocateImageViews();
+
+	}
 
 	public void drawEncounter() {
 
@@ -48,6 +87,8 @@ public enum Model {
 			Party.INSTANCE.addCard(card);
 
 		}
+
+		Party.INSTANCE.relocate();
 
 	}
 

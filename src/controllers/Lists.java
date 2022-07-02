@@ -5,6 +5,7 @@ import utils.ArrayList;
 import utils.Enums.DirectionEnum;
 import utils.Enums.LayerZListEnum;
 import utils.Enums.RearrangeTypeEnum;
+import utils.Enums.RelocateTypeEnum;
 import utils.Interfaces.IImageViewAble;
 import utils.ListImageViewAbles;
 
@@ -13,7 +14,8 @@ public enum Lists {
 	INSTANCE;
 
 	public final ArrayList<ListImageViewAbles<IImageViewAble>> lists = new ArrayList<ListImageViewAbles<IImageViewAble>>();
-	public ListImageViewAbles<ACard> deck, encounter, questLeft, questRight;
+	public ListImageViewAbles<ACard> deck, encounter, questLeft, questRight, questsFinished,
+			graveyard;
 
 	public void instantiate() {
 
@@ -52,6 +54,23 @@ public enum Lists {
 		this.questRight.getListCredentials().gapBetweenComponents = this.questLeft
 				.getListCredentials().gapBetweenComponents;
 		this.questRight.getArrayList().setCapacity(3);
+
+		// quests finished
+
+		this.questsFinished = new ListImageViewAbles<>();
+		this.questsFinished
+				.getListCredentials().coordinatesList = Credentials.INSTANCE.cQuestsFinished;
+		this.questsFinished.getListCredentials().objectsPerRow = 1;
+		this.questsFinished
+				.getListCredentials().gapBetweenComponents.y = Credentials.INSTANCE.dCard.x * 0.376;
+		this.questsFinished.getListCredentials().relocateTypeEnum = RelocateTypeEnum.TOP_RIGHT;
+
+		// grave yard
+
+		this.graveyard = new ListImageViewAbles<>();
+		this.graveyard.getListCredentials().coordinatesList = Credentials.INSTANCE.cGraveyard;
+		this.graveyard.getListCredentials().objectsPerRow = 1;
+		this.graveyard.getListCredentials().rearrangeTypeEnum = RearrangeTypeEnum.PIVOT;
 
 	}
 

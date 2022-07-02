@@ -1,6 +1,8 @@
 package gameStates;
 
 import controllers.Lists;
+import controllers.Model;
+import controllers.Party;
 import enums.ESuit;
 import enums.EText;
 import models.ACard;
@@ -146,7 +148,7 @@ public class ActionExplore extends AGameState {
 
 		case CONTINUE:
 			executeExplore();
-			Flow.INSTANCE.getFlow().addFirst(CheckQuestsForConcecutiveSymbols.class);
+			Flow.INSTANCE.getFlow().addFirst(CheckQuestsForConsecutiveSymbols.class);
 			break;
 
 		default:
@@ -155,7 +157,6 @@ public class ActionExplore extends AGameState {
 		}
 
 		SelectImageViewManager.INSTANCE.releaseSelectImageViews();
-
 		Flow.INSTANCE.proceed();
 
 	}
@@ -174,7 +175,21 @@ public class ActionExplore extends AGameState {
 			if (!card.isSelected())
 				continue;
 
+			listImageViewAbles.getArrayList().remove(card);
+			Lists.INSTANCE.questsFinished.getArrayList().addLast(card);
+
 		}
+
+		listImageViewAbles.relocateImageViews();
+		Model.INSTANCE.rearrangeQuestsFinished();
+
+		Party.INSTANCE.removeCard(this.cardPartySelected);
+		Party.INSTANCE.relocate();
+
+		this.cardPartySelected.flipSideEnemy();
+
+		Lists.INSTANCE.deck.getArrayList().addLast(this.cardPartySelected);
+		Lists.INSTANCE.deck.relocateImageViews();
 
 	}
 

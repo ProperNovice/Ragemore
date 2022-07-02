@@ -20,7 +20,7 @@ public enum Credentials {
 	public ArrayList<Class<?>> lineCastExcludeList = new ArrayList<Class<?>>();
 	public RearrangeTypeEnum rearrangeTypeEnumText = RearrangeTypeEnum.LINEAR;
 	public Vector2 dCard;
-	public Vector2 cDeck, cEncounter, cQuestLeft, cQuestRight;
+	public Vector2 cDeck, cEncounter, cQuestLeft, cQuestRight, cQuestsFinished, cGraveyard;
 	public Vector2 selectCardRatioPosition = new Vector2(0.2, 0.88);
 	public double selectCardRatioDimension = 0.25;
 
@@ -84,6 +84,19 @@ public enum Credentials {
 		y += this.dCard.y / 2;
 		this.cTextPanel = new Vector2(x, y);
 		this.rearrangeTypeEnumText = RearrangeTypeEnum.PIVOT;
+
+		// c quests finished
+
+		x = this.dFrame.x;
+		x -= this.gapBetweenBorders;
+		y = this.gapBetweenBorders;
+		this.cQuestsFinished = new Vector2(x, y);
+
+		// c grave yard
+
+		x = this.gapBetweenBorders + this.dCard.x / 2;
+		y = this.dFrame.y / 2;
+		this.cGraveyard = new Vector2(x, y);
 
 	}
 

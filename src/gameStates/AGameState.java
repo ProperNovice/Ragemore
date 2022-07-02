@@ -58,12 +58,12 @@ public abstract class AGameState {
 
 		else if (Lists.INSTANCE.questLeft.getArrayList().contains(card)) {
 
-			handleCardPressedQuest(card);
+//			handleCardPressedQuest(card);
 			handleCardPressedQuestLeft(card);
 
 		} else if (Lists.INSTANCE.questRight.getArrayList().contains(card)) {
 
-			handleCardPressedQuest(card);
+//			handleCardPressedQuest(card);
 			handleCardPressedQuestRight(card);
 
 		}
@@ -81,9 +81,9 @@ public abstract class AGameState {
 
 	}
 
-	protected void handleCardPressedQuest(ACard card) {
-
-	}
+//	protected void handleCardPressedQuest(ACard card) {
+//
+//	}
 
 	protected void handleCardPressedQuestLeft(ACard card) {
 

@@ -13,10 +13,12 @@ public class JUnit extends AGameState {
 
 		Model.INSTANCE.drawEncounter();
 
-		addCardsToQuests(3, 2);
-		addCardsToParty(8);
+		addCardsToQuests(3, 3);
+		addCardsToParty(5);
+		addCardsToQuestsFinished(0);
+		addCardsToGraveyard(0);
 
-		Flow.INSTANCE.getFlow().addLast(ActionExplore.class);
+		Flow.INSTANCE.getFlow().addLast(ActionRecruit.class);
 		Flow.INSTANCE.proceed();
 
 	}
@@ -49,8 +51,35 @@ public class JUnit extends AGameState {
 			ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
 			card.flipSideHero();
 			Party.INSTANCE.addCard(card);
+			Party.INSTANCE.relocate();
 
 		}
+
+	}
+
+	public void addCardsToQuestsFinished(int cardsToAdd) {
+
+		for (int counter = 1; counter <= cardsToAdd; counter++) {
+
+			ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
+			Lists.INSTANCE.questsFinished.getArrayList().addLast(card);
+
+		}
+
+		Lists.INSTANCE.questsFinished.relocateImageViews();
+
+	}
+
+	public void addCardsToGraveyard(int cardsToAdd) {
+
+		for (int counter = 1; counter <= cardsToAdd; counter++) {
+
+			ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
+			Lists.INSTANCE.graveyard.getArrayList().addLast(card);
+
+		}
+
+		Lists.INSTANCE.graveyard.relocateImageViews();
 
 	}
 

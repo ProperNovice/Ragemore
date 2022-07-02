@@ -15,6 +15,7 @@ public enum EText {
 	EXPLORE_INDICATOR("Explore", TextTypeEnum.INDICATOR),
 	RECRUIT_INDICATOR("Recruit", TextTypeEnum.INDICATOR),
 	FIGHT_INDICATOR("Fight", TextTypeEnum.INDICATOR), CANCEL("Cancel", TextTypeEnum.OPTION),
+	DISCARD_QUEST("Discard quest", TextTypeEnum.INDICATOR),
 
 	;
 

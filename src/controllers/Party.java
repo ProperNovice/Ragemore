@@ -102,8 +102,6 @@ public enum Party {
 
 		}
 
-		rearrange();
-
 	}
 
 	public void removeCard(ACard card) {
@@ -122,11 +120,9 @@ public enum Party {
 
 		}
 
-		rearrange();
-
 	}
 
-	private void rearrange() {
+	public void relocate() {
 
 		for (ListImageViewAbles<ACard> list : this.lists) {
 
