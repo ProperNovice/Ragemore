@@ -68,6 +68,7 @@ public enum Lists {
 		// grave yard
 
 		this.graveyard = new ListImageViewAbles<>();
+		this.graveyard.getArrayList().setCapacity(3);
 		this.graveyard.getListCredentials().coordinatesList = Credentials.INSTANCE.cGraveyard;
 		this.graveyard.getListCredentials().objectsPerRow = 1;
 		this.graveyard.getListCredentials().rearrangeTypeEnum = RearrangeTypeEnum.PIVOT;

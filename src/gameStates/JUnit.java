@@ -4,6 +4,7 @@ import controllers.Lists;
 import controllers.Model;
 import controllers.Party;
 import models.ACard;
+import utils.ArrayList;
 import utils.Flow;
 
 public class JUnit extends AGameState {
@@ -17,9 +18,25 @@ public class JUnit extends AGameState {
 		addCardsToParty(10);
 		addCardsToQuestsFinished(0);
 		addCardsToGraveyard(0);
+		putSelectedCardsToTheBottomOfTheDeck();
 
-		Flow.INSTANCE.getFlow().addLast(ActionFight.class);
+		Flow.INSTANCE.getFlow().addLast(PutSelectedCardsToTheBottomOfTheDeck.class);
 		Flow.INSTANCE.proceed();
+
+	}
+
+	public void putSelectedCardsToTheBottomOfTheDeck() {
+
+		Lists.INSTANCE.encounter.getArrayList().getRandom().setSelected();
+
+		ArrayList<ACard> party = Party.INSTANCE.getFightAbleCards();
+
+		for (int counter = 1; counter <= 1; counter++)
+			if (!party.isEmpty())
+				party.removeRandom();
+
+		for (ACard card : party)
+			card.setSelected();
 
 	}
 

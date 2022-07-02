@@ -16,6 +16,7 @@ public enum EText {
 	RECRUIT_INDICATOR("Recruit", TextTypeEnum.INDICATOR),
 	FIGHT_INDICATOR("Fight", TextTypeEnum.INDICATOR), CANCEL("Cancel", TextTypeEnum.OPTION),
 	DISCARD_QUEST("Discard quest", TextTypeEnum.INDICATOR),
+	PUT_CARD_TO_BOTTOM("Put card to bottom", TextTypeEnum.INDICATOR),
 
 	;
 
