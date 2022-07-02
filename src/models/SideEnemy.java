@@ -32,7 +32,7 @@ public class SideEnemy {
 
 	}
 
-	public Class<? extends AGameState> executeAbility() {
+	public Class<? extends AGameState> getAbility() {
 		return this.ability;
 	}
 
@@ -58,6 +58,7 @@ public class SideEnemy {
 		Logger.INSTANCE.log("suit -> " + this.eSuit);
 		Logger.INSTANCE.log("strength -> " + this.strength);
 		Logger.INSTANCE.log("has scull -> " + this.hasScull);
+		Logger.INSTANCE.log("ability -> " + this.ability);
 		Logger.INSTANCE.newLine();
 
 	}
