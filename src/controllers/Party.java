@@ -164,6 +164,17 @@ public enum Party {
 
 	}
 
+	public ArrayList<ACard> getFightAbleCards() {
+
+		ArrayList<ACard> cards = new ArrayList<>();
+
+		for (ListImageViewAbles<ACard> list : this.lists)
+			cards.addLast(list.getArrayList().getLast());
+
+		return cards;
+
+	}
+
 	public void clearCards() {
 		this.lists.clear();
 	}

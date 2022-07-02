@@ -143,6 +143,7 @@ public class ActionExplore extends AGameState {
 		switch (eText) {
 
 		case CANCEL:
+			SelectImageViewManager.INSTANCE.releaseSelectImageViews();
 			Flow.INSTANCE.getFlow().addFirst(ChooseAction.class);
 			break;
 
