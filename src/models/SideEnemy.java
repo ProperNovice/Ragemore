@@ -58,7 +58,12 @@ public class SideEnemy {
 		Logger.INSTANCE.log("suit -> " + this.eSuit);
 		Logger.INSTANCE.log("strength -> " + this.strength);
 		Logger.INSTANCE.log("has scull -> " + this.hasScull);
-		Logger.INSTANCE.log("ability -> " + this.ability);
+
+		String ability = this.ability.toString();
+		int index = ability.indexOf(".");
+		ability = ability.substring(index + 1, ability.length());
+		Logger.INSTANCE.log(ability);
+
 		Logger.INSTANCE.newLine();
 
 	}

@@ -1,6 +1,19 @@
 package controllers;
 
 import enums.ESuit;
+import gameStates.AGameState;
+import gameStatesAbilities.GainNextCardIfItIsCrossOrRoad;
+import gameStatesAbilities.GainNextCardIfItIsCrownOrSun;
+import gameStatesAbilities.IfThereIsAtLeastOneCardInTheGraveyardAddThisCardToTheGraveyard;
+import gameStatesAbilities.KillNextCard;
+import gameStatesAbilities.KillNextCardIfItIsCrossOrRoad;
+import gameStatesAbilities.KillOneCardInTheQuestTableauWithTheLeastCards;
+import gameStatesAbilities.MoveBottomCardToTheTop;
+import gameStatesAbilities.MoveOneCardFromFinishedQuestsToTheBottom;
+import gameStatesAbilities.MoveOneCardFromTheGraveyardToTheBottom;
+import gameStatesAbilities.MoveTopCardToTheBottom;
+import gameStatesAbilities.PlayNextCard;
+import gameStatesAbilities.ShuffleTheDeck;
 import models.ACard;
 import utils.ArrayList;
 import utils.ListImageViewAbles;
@@ -8,6 +21,17 @@ import utils.ListImageViewAbles;
 public enum Model {
 
 	INSTANCE;
+
+	private ArrayList<Class<? extends AGameState>> abilitiesResolveBeforePlacing = new ArrayList<>();
+	private ArrayList<Class<? extends AGameState>> abilitiesResolveAfterPlacing = new ArrayList<>();
+
+	public boolean abilityResolvesBeforePlacing(Class<? extends AGameState> object) {
+		return this.abilitiesResolveBeforePlacing.contains(object);
+	}
+
+	public boolean abilityResolvesAfterPlacing(Class<? extends AGameState> object) {
+		return this.abilitiesResolveAfterPlacing.contains(object);
+	}
 
 	public void rearrangeQuestsFinished() {
 
@@ -41,7 +65,7 @@ public enum Model {
 			}
 
 		}
-		
+
 		Lists.INSTANCE.questsFinished.relocateImageViews();
 
 	}
@@ -125,6 +149,30 @@ public enum Model {
 
 		quest.relocateImageViews();
 
+	}
+
+	private void createAbilitiesBeforeAndAfterPlacement() {
+
+		this.abilitiesResolveBeforePlacing
+				.addLast(IfThereIsAtLeastOneCardInTheGraveyardAddThisCardToTheGraveyard.class);
+
+		this.abilitiesResolveAfterPlacing.addLast(GainNextCardIfItIsCrossOrRoad.class);
+		this.abilitiesResolveAfterPlacing.addLast(GainNextCardIfItIsCrownOrSun.class);
+		this.abilitiesResolveAfterPlacing.addLast(KillNextCard.class);
+		this.abilitiesResolveAfterPlacing.addLast(KillNextCardIfItIsCrossOrRoad.class);
+		this.abilitiesResolveAfterPlacing
+				.addLast(KillOneCardInTheQuestTableauWithTheLeastCards.class);
+		this.abilitiesResolveAfterPlacing.addLast(MoveBottomCardToTheTop.class);
+		this.abilitiesResolveAfterPlacing.addLast(MoveOneCardFromFinishedQuestsToTheBottom.class);
+		this.abilitiesResolveAfterPlacing.addLast(MoveOneCardFromTheGraveyardToTheBottom.class);
+		this.abilitiesResolveAfterPlacing.addLast(MoveTopCardToTheBottom.class);
+		this.abilitiesResolveAfterPlacing.addLast(PlayNextCard.class);
+		this.abilitiesResolveAfterPlacing.addLast(ShuffleTheDeck.class);
+
+	}
+
+	private Model() {
+		createAbilitiesBeforeAndAfterPlacement();
 	}
 
 }

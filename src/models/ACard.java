@@ -65,6 +65,7 @@ public abstract class ACard implements IImageViewAble, IEventHandlerAble {
 
 	@Override
 	public void handleMousePressed() {
+		print();
 		Flow.INSTANCE.getGameStateCurrent().handleCardPressed(this);
 	}
 
