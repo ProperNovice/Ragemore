@@ -2,6 +2,7 @@ package gameStates;
 
 import enums.EText;
 import utils.Flow;
+import utils.SelectImageViewManager;
 
 public abstract class AEndGame extends AGameState {
 
@@ -9,6 +10,8 @@ public abstract class AEndGame extends AGameState {
 	public void execute() {
 
 		concealText();
+		SelectImageViewManager.INSTANCE.releaseSelectImageViews();
+		Flow.INSTANCE.getFlow().clear();
 
 		getEText().show();
 		EText.RESTART.show();

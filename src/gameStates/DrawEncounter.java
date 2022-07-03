@@ -1,5 +1,6 @@
 package gameStates;
 
+import controllers.Lists;
 import controllers.Model;
 import enums.EText;
 import utils.Flow;
@@ -9,7 +10,10 @@ public class DrawEncounter extends AGameState {
 	@Override
 	public void execute() {
 
-		EText.DRAW_ENCOUNTER.show();
+		if (Lists.INSTANCE.deck.getArrayList().isEmpty())
+			Flow.INSTANCE.executeGameState(EndGameLost.class);
+		else
+			EText.DRAW_ENCOUNTER.show();
 
 	}
 

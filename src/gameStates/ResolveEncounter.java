@@ -3,7 +3,6 @@ package gameStates;
 import controllers.Lists;
 import controllers.Model;
 import enums.EText;
-import gameStatesAbilities.PlayNextCard;
 import models.ACard;
 import utils.Flow;
 import utils.ShutDown;
@@ -28,12 +27,6 @@ public class ResolveEncounter extends AGameState {
 
 		ACard card = Lists.INSTANCE.encounter.getArrayList().getRandom();
 		Class<? extends AGameState> ability = card.getSideEnemy().getAbility();
-
-		// TODO
-
-		ability = PlayNextCard.class;
-
-		// TODO
 
 		if (Model.INSTANCE.abilityResolvesBeforePlacing(ability))
 			Flow.INSTANCE.getFlow().addAllFirst(ability, PutEncounterCardToQuest.class);

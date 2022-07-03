@@ -179,4 +179,15 @@ public enum Party {
 		this.lists.clear();
 	}
 
+	public boolean isEmpty() {
+
+		int size = 0;
+
+		for (ListImageViewAbles<ACard> list : this.lists)
+			size += list.getArrayList().size();
+
+		return size == 0;
+
+	}
+
 }

@@ -4,6 +4,7 @@ import controllers.Lists;
 import controllers.Model;
 import controllers.Party;
 import models.ACard;
+import models.WinLoseConditions;
 import utils.ArrayList;
 import utils.Flow;
 
@@ -12,15 +13,17 @@ public class JUnit extends AGameState {
 	@Override
 	public void execute() {
 
-		Model.INSTANCE.drawEncounter();
-
-		addCardsToQuests(2, 1);
-		addCardsToParty(4);
-		addCardsToQuestsFinished(3);
-		addCardsToGraveyard(2);
+		WinLoseConditions.INSTANCE.toString();
+//
+//		Model.INSTANCE.drawEncounter();
+//
+//		addCardsToQuests(2, 1);
+//		addCardsToParty(3);
+//		addCardsToQuestsFinished(9);
+//		addCardsToGraveyard(2);
 //		putSelectedCardsToTheBottomOfTheDeck();
 
-		Flow.INSTANCE.getFlow().addLast(ResolveEncounter.class);
+		Flow.INSTANCE.getFlow().addLast(StartGame.class);
 		Flow.INSTANCE.proceed();
 
 	}
@@ -83,7 +86,7 @@ public class JUnit extends AGameState {
 
 		}
 
-		Lists.INSTANCE.questsFinished.relocateImageViews();
+		Model.INSTANCE.rearrangeQuestsFinished();
 
 	}
 

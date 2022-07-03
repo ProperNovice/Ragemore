@@ -1,11 +1,13 @@
 package models;
 
 import controllers.Credentials;
+import controllers.Lists;
 import utils.Flow;
 import utils.Image;
 import utils.ImageView;
 import utils.Interfaces.IEventHandlerAble;
 import utils.Interfaces.IImageViewAble;
+import utils.ListImageViewAbles;
 
 public abstract class ACard implements IImageViewAble, IEventHandlerAble {
 
@@ -65,8 +67,21 @@ public abstract class ACard implements IImageViewAble, IEventHandlerAble {
 
 	@Override
 	public void handleMousePressed() {
+
 		print();
 		Flow.INSTANCE.getGameStateCurrent().handleCardPressed(this);
+
+	}
+
+	@Override
+	public void handleMouseEntered() {
+		getImageView().toFront();
+	}
+
+	@Override
+	public void handleMouseExited() {
+		for (ListImageViewAbles<IImageViewAble> list : Lists.INSTANCE.lists)
+			list.layerZSort();
 	}
 
 }
