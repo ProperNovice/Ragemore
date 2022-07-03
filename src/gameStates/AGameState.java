@@ -56,20 +56,20 @@ public abstract class AGameState {
 		else if (Lists.INSTANCE.encounter.getArrayList().contains(card))
 			handleCardPressedEncounter(card);
 
-		else if (Lists.INSTANCE.questLeft.getArrayList().contains(card)) {
-
-//			handleCardPressedQuest(card);
+		else if (Lists.INSTANCE.questLeft.getArrayList().contains(card))
 			handleCardPressedQuestLeft(card);
 
-		} else if (Lists.INSTANCE.questRight.getArrayList().contains(card)) {
-
-//			handleCardPressedQuest(card);
+		else if (Lists.INSTANCE.questRight.getArrayList().contains(card))
 			handleCardPressedQuestRight(card);
-
-		}
 
 		else if (Party.INSTANCE.contains(card))
 			handleCardPressedParty(card);
+
+		else if (Lists.INSTANCE.questsFinished.getArrayList().contains(card))
+			handleCardPressedQuestsFinished(card);
+
+		else if (Lists.INSTANCE.graveyard.getArrayList().contains(card))
+			handleCardPressedGraveyard(card);
 
 	}
 
@@ -81,10 +81,6 @@ public abstract class AGameState {
 
 	}
 
-//	protected void handleCardPressedQuest(ACard card) {
-//
-//	}
-
 	protected void handleCardPressedQuestLeft(ACard card) {
 
 	}
@@ -94,6 +90,14 @@ public abstract class AGameState {
 	}
 
 	protected void handleCardPressedParty(ACard card) {
+
+	}
+
+	protected void handleCardPressedQuestsFinished(ACard card) {
+
+	}
+
+	protected void handleCardPressedGraveyard(ACard card) {
 
 	}
 
