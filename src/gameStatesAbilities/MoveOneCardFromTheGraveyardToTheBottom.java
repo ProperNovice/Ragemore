@@ -25,6 +25,8 @@ public class MoveOneCardFromTheGraveyardToTheBottom extends AGameState {
 	@Override
 	protected void handleCardPressedGraveyard(ACard card) {
 
+		concealText();
+
 		Lists.INSTANCE.graveyard.getArrayList().remove(card);
 		Lists.INSTANCE.graveyard.relocateImageViews();
 
