@@ -64,6 +64,7 @@ public class PutSelectedCardsToTheBottomOfTheDeck extends AGameState {
 		Lists.INSTANCE.encounter.getArrayList().remove(card);
 		card.reverseSelectImageView();
 
+		card.flipSideEnemy();
 		Lists.INSTANCE.deck.getArrayList().addLast(card);
 		Lists.INSTANCE.deck.relocateImageViews();
 
