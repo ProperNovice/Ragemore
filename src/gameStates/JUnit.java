@@ -4,7 +4,6 @@ import controllers.Lists;
 import controllers.Model;
 import controllers.Party;
 import models.ACard;
-import models.Check;
 import models.WinLoseConditions;
 import utils.ArrayList;
 import utils.Flow;
@@ -13,8 +12,6 @@ public class JUnit extends AGameState {
 
 	@Override
 	public void execute() {
-		
-		new Check();
 
 		WinLoseConditions.INSTANCE.toString();
 //
