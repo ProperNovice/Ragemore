@@ -48,9 +48,21 @@ public class PutEncounterCardToQuest extends AGameState {
 
 		if (canBePlacedOnQuestLeft && canBePlacedOnQuestRight) {
 
-			EText.CHOOSE_QUEST_PILE.show();
-			EText.LEFT.show();
-			EText.RIGHT.show();
+			if (Lists.INSTANCE.questLeft.getArrayList().isMaxedCapacity()
+					&& !Lists.INSTANCE.questRight.getArrayList().isMaxedCapacity())
+				placeEncounterOnRightQuest();
+
+			else if (!Lists.INSTANCE.questLeft.getArrayList().isMaxedCapacity()
+					&& Lists.INSTANCE.questRight.getArrayList().isMaxedCapacity())
+				placeEncounterOnLeftQuest();
+
+			else {
+
+				EText.CHOOSE_QUEST_PILE.show();
+				EText.LEFT.show();
+				EText.RIGHT.show();
+
+			}
 
 		} else if (canBePlacedOnQuestLeft)
 			placeEncounterOnLeftQuest();
