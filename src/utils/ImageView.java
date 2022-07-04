@@ -38,7 +38,7 @@ public class ImageView implements INode {
 
 		this.imageFront = image;
 
-		this.imageView = new javafx.scene.image.ImageView(this.imageFront.getImage());
+		this.imageView = new javafx.scene.image.ImageView(this.imageFront.getImageFX());
 		GuiInstances.INSTANCE.getParent().addNode(this.imageView);
 
 		this.imageShowing = this.imageFront;
@@ -206,7 +206,7 @@ public class ImageView implements INode {
 
 	public final void setImage(final Image image) {
 
-		this.imageView.setImage(image.getImage());
+		this.imageView.setImage(image.getImageFX());
 		this.imageFront = image;
 
 	}
@@ -304,7 +304,7 @@ public class ImageView implements INode {
 	}
 
 	private void setImageShowing() {
-		this.imageView.setImage(this.imageShowing.getImage());
+		this.imageView.setImage(this.imageShowing.getImageFX());
 	}
 
 	@Override

@@ -44,6 +44,10 @@ public abstract class ACard implements IImageViewAble, IEventHandlerAble {
 		getImageView().setImage(this.imageShowing);
 	}
 
+	public final boolean isFlippedSideHero() {
+		return this.imageShowing.equals(this.sideHero.getImage());
+	}
+
 	protected abstract SideEnemy createSideEnemy();
 
 	protected abstract SideHero createSideHero();

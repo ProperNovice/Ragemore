@@ -16,7 +16,7 @@ public class Image {
 		return this.filePath;
 	}
 
-	public javafx.scene.image.Image getImage() {
+	public javafx.scene.image.Image getImageFX() {
 		return this.image;
 	}
 
