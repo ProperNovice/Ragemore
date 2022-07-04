@@ -28,12 +28,10 @@ public enum CardIndicator {
 	private class ImageViewClone implements IImageViewAble {
 
 		private HashMap<String, Image> map = new HashMap<>();
-		private Image transparent = new Image("misc/invisible.png");
 		private Vector2 coordinates = null;
+		private boolean imageViewCreated = false;
 
 		public ImageViewClone() {
-
-			new ImageView(this.transparent, this);
 
 			double x = Credentials.INSTANCE.gapBetweenBorders;
 			double y = Credentials.INSTANCE.dFrame.y;
@@ -49,13 +47,24 @@ public enum CardIndicator {
 			if (!this.map.containsKey(filePath))
 				this.map.put(filePath, new Image(filePath));
 
-			getImageView().setImage(this.map.getValue(filePath));
+			if (!this.imageViewCreated) {
+
+				this.imageViewCreated = true;
+				new ImageView(this.map.getValue(filePath), this);
+
+			} else {
+
+				getImageView().setImage(this.map.getValue(filePath));
+				getImageView().setVisible(true);
+
+			}
+
 			getImageView().relocateBottomLeft(this.coordinates);
 
 		}
 
 		public void clear() {
-			getImageView().setImage(this.transparent);
+			getImageView().setVisible(false);
 		}
 
 	}
