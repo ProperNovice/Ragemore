@@ -23,6 +23,8 @@ public enum EText {
 	RESOLVE_ENCOUNTER("Resolve encounter", TextTypeEnum.OPTION),
 	CHOOSE_CARD_TO_KILL("Choose card to kill", TextTypeEnum.INDICATOR),
 	CHOOSE_CARD("Choose card", TextTypeEnum.INDICATOR),
+	CHOOSE_DIFFICULTY_LEVEL("Choose difficulty level", TextTypeEnum.INDICATOR),
+	NORMAL("Normal", TextTypeEnum.OPTION), HARD("Hard", TextTypeEnum.OPTION),
 
 	;
 

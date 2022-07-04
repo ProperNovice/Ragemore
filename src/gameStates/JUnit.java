@@ -23,7 +23,7 @@ public class JUnit extends AGameState {
 //		addCardsToGraveyard(2);
 //		putSelectedCardsToTheBottomOfTheDeck();
 
-		Flow.INSTANCE.getFlow().addLast(StartGame.class);
+		Flow.INSTANCE.getFlow().addLast(ChooseDifficultyLevel.class);
 		Flow.INSTANCE.proceed();
 
 	}

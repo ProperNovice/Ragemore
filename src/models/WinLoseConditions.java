@@ -1,10 +1,12 @@
 package models;
 
 import controllers.Lists;
+import controllers.Model;
 import controllers.Party;
 import enums.ESuit;
 import gameStates.AEndGame;
 import gameStates.AGameState;
+import gameStates.ChooseDifficultyLevel;
 import gameStates.EndGameLost;
 import gameStates.EndGameWon;
 import gameStates.JUnit;
@@ -34,6 +36,7 @@ public enum WinLoseConditions implements IUpdateAble {
 		this.gameStatesExcluded.addLast(EndGameLost.class);
 		this.gameStatesExcluded.addLast(StartGame.class);
 		this.gameStatesExcluded.addLast(RestartGame.class);
+		this.gameStatesExcluded.addLast(ChooseDifficultyLevel.class);
 
 	}
 
@@ -67,7 +70,7 @@ public enum WinLoseConditions implements IUpdateAble {
 		for (ACard card : Lists.INSTANCE.questsFinished)
 			map.getValue(card.getSideEnemy().getESuit()).add(1);
 
-		int cardsNeeded = 3, completed = 0;
+		int cardsNeeded = Model.INSTANCE.getEDifficultyLevel().getCardsNeeded(), completed = 0;
 
 		for (ESuit eSuit : map)
 			if (map.getValue(eSuit).get() >= cardsNeeded)
@@ -81,16 +84,16 @@ public enum WinLoseConditions implements IUpdateAble {
 		if (Party.INSTANCE.isEmpty())
 			return true;
 
-		if (Lists.INSTANCE.graveyard.getArrayList().size() >= 3)
+		else if (Lists.INSTANCE.graveyard.getArrayList().size() >= 3)
 			return true;
 
-		if (Lists.INSTANCE.questLeft.getArrayList().size() >= 4)
+		else if (Lists.INSTANCE.questLeft.getArrayList().size() >= 4)
 			return true;
 
-		if (Lists.INSTANCE.questRight.getArrayList().size() >= 4)
+		else if (Lists.INSTANCE.questRight.getArrayList().size() >= 4)
 			return true;
 
-		if (Lists.INSTANCE.questLeft.getArrayList().size()
+		else if (Lists.INSTANCE.questLeft.getArrayList().size()
 				+ Lists.INSTANCE.questRight.getArrayList().size() == 0)
 			return true;
 

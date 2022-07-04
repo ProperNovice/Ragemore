@@ -1,5 +1,6 @@
 package controllers;
 
+import enums.EDifficultyLevel;
 import enums.ESuit;
 import gameStates.AGameState;
 import gameStatesAbilities.GainNextCardIfItIsCrossOrRoad;
@@ -24,6 +25,15 @@ public enum Model {
 
 	private ArrayList<Class<? extends AGameState>> abilitiesResolveBeforePlacing = new ArrayList<>();
 	private ArrayList<Class<? extends AGameState>> abilitiesResolveAfterPlacing = new ArrayList<>();
+	private EDifficultyLevel eDifficultyLevel = null;
+
+	public void setEDifficultyLevel(EDifficultyLevel eDifficultyLevel) {
+		this.eDifficultyLevel = eDifficultyLevel;
+	}
+
+	public EDifficultyLevel getEDifficultyLevel() {
+		return this.eDifficultyLevel;
+	}
 
 	public boolean abilityResolvesBeforePlacing(Class<? extends AGameState> object) {
 		return this.abilitiesResolveBeforePlacing.contains(object);

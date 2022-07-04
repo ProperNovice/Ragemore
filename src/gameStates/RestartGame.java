@@ -12,7 +12,7 @@ public class RestartGame extends AGameState {
 		SelectImageViewManager.INSTANCE.releaseSelectImageViews();
 		Flow.INSTANCE.getFlow().clear();
 
-		Flow.INSTANCE.executeGameState(StartGame.class);
+		Flow.INSTANCE.executeGameState(ChooseDifficultyLevel.class);
 
 	}
 
