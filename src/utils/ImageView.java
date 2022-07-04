@@ -309,12 +309,12 @@ public class ImageView implements INode {
 
 	@Override
 	public double getWidth() {
-		return this.widthOriginal * this.scale;
+		return this.imageView.minWidth(0) * this.scale;
 	}
 
 	@Override
 	public double getHeight() {
-		return this.heightOriginal * this.scale;
+		return this.imageView.minHeight(0) * this.scale;
 	}
 
 	public Vector2 getDimenions() {

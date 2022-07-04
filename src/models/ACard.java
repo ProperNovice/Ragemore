@@ -75,13 +75,24 @@ public abstract class ACard implements IImageViewAble, IEventHandlerAble {
 
 	@Override
 	public void handleMouseEntered() {
+
 		getImageView().toFront();
+
+		if (this.imageShowing.equals(this.sideEnemy.getImage()))
+			CardIndicator.INSTANCE.setImage(this.sideHero.getImage());
+		else if (this.imageShowing.equals(this.sideHero.getImage()))
+			CardIndicator.INSTANCE.setImage(this.sideEnemy.getImage());
+
 	}
 
 	@Override
 	public void handleMouseExited() {
+
 		for (ListImageViewAbles<IImageViewAble> list : Lists.INSTANCE.lists)
 			list.layerZSort();
+
+		CardIndicator.INSTANCE.clear();
+
 	}
 
 }
