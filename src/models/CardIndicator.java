@@ -1,6 +1,7 @@
 package models;
 
 import controllers.Credentials;
+import utils.Enums.MapImageViews;
 import utils.HashMap;
 import utils.Image;
 import utils.ImageView;
@@ -29,7 +30,6 @@ public enum CardIndicator {
 
 		private HashMap<String, Image> map = new HashMap<>();
 		private Vector2 coordinates = null;
-		private boolean imageViewCreated = false;
 
 		public ImageViewClone() {
 
@@ -47,12 +47,10 @@ public enum CardIndicator {
 			if (!this.map.containsKey(filePath))
 				this.map.put(filePath, new Image(filePath));
 
-			if (!this.imageViewCreated) {
-
-				this.imageViewCreated = true;
+			if (!MapImageViews.INSTANCE.getImageViewsMap().containsKey(this))
 				new ImageView(this.map.getValue(filePath), this);
 
-			} else {
+			else {
 
 				getImageView().setImage(this.map.getValue(filePath));
 				getImageView().setVisible(true);

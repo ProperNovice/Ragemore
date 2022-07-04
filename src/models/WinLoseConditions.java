@@ -6,7 +6,6 @@ import controllers.Party;
 import enums.ESuit;
 import gameStates.AEndGame;
 import gameStates.AGameState;
-import gameStates.ChooseDifficultyLevel;
 import gameStates.EndGameLost;
 import gameStates.EndGameWon;
 import gameStates.JUnit;
@@ -36,7 +35,6 @@ public enum WinLoseConditions implements IUpdateAble {
 		this.gameStatesExcluded.addLast(EndGameLost.class);
 		this.gameStatesExcluded.addLast(StartGame.class);
 		this.gameStatesExcluded.addLast(RestartGame.class);
-		this.gameStatesExcluded.addLast(ChooseDifficultyLevel.class);
 
 	}
 
