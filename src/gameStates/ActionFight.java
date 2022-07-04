@@ -11,12 +11,15 @@ import utils.ShutDown;
 
 public class ActionFight extends AGameState {
 
-	private ACard cardPartyNoPlusSelected = null;
-	private ACard cardPartyPlusSelected = null;
+	private ArrayList<ACard> cardPartyNoPlusSelected = null;
+	private ArrayList<ACard> cardPartyPlusSelected = null;
 	private ArrayList<ACard> cardsPartyFightable = new ArrayList<>();
 
 	@Override
 	public void execute() {
+
+		this.cardPartyNoPlusSelected = new ArrayList<>();
+		this.cardPartyPlusSelected = new ArrayList<>();
 
 		Lists.INSTANCE.encounter.getArrayList().getRandom().reverseSelectImageView();
 		this.cardsPartyFightable.addAllFirst(Party.INSTANCE.getFightAbleCards());
@@ -31,11 +34,12 @@ public class ActionFight extends AGameState {
 
 		int strengthHeroes = 0;
 
-		if (this.cardPartyNoPlusSelected != null)
-			strengthHeroes += this.cardPartyNoPlusSelected.getSideHero().getStrength();
+		if (!this.cardPartyNoPlusSelected.isEmpty())
+			for (ACard card : this.cardPartyNoPlusSelected)
+				strengthHeroes += card.getSideHero().getStrength();
 
-		if (this.cardPartyPlusSelected != null)
-			strengthHeroes += this.cardPartyPlusSelected.getSideHero().getStrength();
+		for (ACard card : this.cardPartyPlusSelected)
+			strengthHeroes += card.getSideHero().getStrength();
 
 		if (strengthHeroes > strengthMonster)
 			resolveWin();
@@ -59,11 +63,13 @@ public class ActionFight extends AGameState {
 
 		Lists.INSTANCE.encounter.getArrayList().getRandom().reverseSelectImageView();
 
-		if (this.cardPartyNoPlusSelected != null)
-			this.cardPartyNoPlusSelected.reverseSelectImageView();
+		if (!this.cardPartyNoPlusSelected.isEmpty())
+			for (ACard card : this.cardPartyNoPlusSelected)
+				card.reverseSelectImageView();
 
-		if (this.cardPartyPlusSelected != null)
-			this.cardPartyPlusSelected.reverseSelectImageView();
+		if (!this.cardPartyPlusSelected.isEmpty())
+			for (ACard card : this.cardPartyPlusSelected)
+				card.reverseSelectImageView();
 
 		Flow.INSTANCE.getFlow().addFirst(PutSelectedCardsToTheBottomOfTheDeck.class);
 
@@ -71,23 +77,31 @@ public class ActionFight extends AGameState {
 
 	private void resolveLoss() {
 
-		ACard card = Lists.INSTANCE.encounter.getArrayList().removeRandom();
-		card.flipSideHero();
-		Party.INSTANCE.addCard(card);
+		ACard cardEncounter = Lists.INSTANCE.encounter.getArrayList().removeRandom();
+		cardEncounter.flipSideHero();
+		Party.INSTANCE.addCard(cardEncounter);
 
-		if (this.cardPartyNoPlusSelected != null) {
+		if (!this.cardPartyNoPlusSelected.isEmpty()) {
 
-			this.cardPartyNoPlusSelected.flipSideEnemy();
-			Party.INSTANCE.removeCard(this.cardPartyNoPlusSelected);
-			Lists.INSTANCE.graveyard.getArrayList().addLast(this.cardPartyNoPlusSelected);
+			for (ACard card : this.cardPartyNoPlusSelected) {
+
+				card.flipSideEnemy();
+				Party.INSTANCE.removeCard(card);
+				Lists.INSTANCE.graveyard.getArrayList().addLast(card);
+
+			}
 
 		}
 
-		if (this.cardPartyPlusSelected != null) {
+		if (!this.cardPartyPlusSelected.isEmpty()) {
 
-			this.cardPartyPlusSelected.flipSideEnemy();
-			Party.INSTANCE.removeCard(this.cardPartyPlusSelected);
-			Lists.INSTANCE.graveyard.getArrayList().addLast(this.cardPartyPlusSelected);
+			for (ACard card : this.cardPartyPlusSelected) {
+
+				card.flipSideEnemy();
+				Party.INSTANCE.removeCard(card);
+				Lists.INSTANCE.graveyard.getArrayList().addLast(card);
+
+			}
 
 		}
 
@@ -127,8 +141,10 @@ public class ActionFight extends AGameState {
 
 		EText.FIGHT_INDICATOR.show();
 
-		if (this.cardPartyNoPlusSelected != null || this.cardPartyPlusSelected != null)
-			EText.CONTINUE.show();
+		if (this.cardPartyNoPlusSelected.size() + this.cardPartyPlusSelected.size() > 0)
+			if (this.cardPartyNoPlusSelected.size() + this.cardPartyPlusSelected.size() <= 2)
+				if (this.cardPartyNoPlusSelected.size() <= 1)
+					EText.CONTINUE.show();
 
 		EText.CANCEL.show();
 
@@ -142,46 +158,21 @@ public class ActionFight extends AGameState {
 
 		if (card.getSideHero().hasPlusIcon()) {
 
-			if (this.cardPartyPlusSelected == null) {
-
-				this.cardPartyPlusSelected = card;
-				this.cardPartyPlusSelected.reverseSelectImageView();
-
-			} else if (this.cardPartyPlusSelected.equals(card)) {
-
-				this.cardPartyPlusSelected.reverseSelectImageView();
-				this.cardPartyPlusSelected = null;
-
-			} else {
-
-				this.cardPartyPlusSelected.reverseSelectImageView();
-				this.cardPartyPlusSelected = card;
-				this.cardPartyPlusSelected.reverseSelectImageView();
-
-			}
+			if (this.cardPartyPlusSelected.contains(card))
+				this.cardPartyPlusSelected.remove(card);
+			else
+				this.cardPartyPlusSelected.addLast(card);
 
 		} else if (!card.getSideHero().hasPlusIcon()) {
 
-			if (this.cardPartyNoPlusSelected == null) {
-
-				this.cardPartyNoPlusSelected = card;
-				this.cardPartyNoPlusSelected.reverseSelectImageView();
-
-			} else if (this.cardPartyNoPlusSelected.equals(card)) {
-
-				this.cardPartyNoPlusSelected.reverseSelectImageView();
-				this.cardPartyNoPlusSelected = null;
-
-			} else {
-
-				this.cardPartyNoPlusSelected.reverseSelectImageView();
-				this.cardPartyNoPlusSelected = card;
-				this.cardPartyNoPlusSelected.reverseSelectImageView();
-
-			}
+			if (this.cardPartyNoPlusSelected.contains(card))
+				this.cardPartyNoPlusSelected.remove(card);
+			else
+				this.cardPartyNoPlusSelected.addLast(card);
 
 		}
 
+		card.reverseSelectImageView();
 		handleETextShowing();
 
 	}
