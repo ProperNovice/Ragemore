@@ -94,8 +94,8 @@ public enum Credentials {
 
 		// c grave yard
 
-		x = this.gapBetweenBorders + this.dCard.x / 2;
-		y = this.dFrame.y / 2;
+		x = this.gapBetweenBorders;
+		y = this.gapBetweenBorders;
 		this.cGraveyard = new Vector2(x, y);
 
 	}

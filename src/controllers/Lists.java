@@ -71,7 +71,8 @@ public enum Lists {
 		this.graveyard.getArrayList().setCapacity(3);
 		this.graveyard.getListCredentials().coordinatesList = Credentials.INSTANCE.cGraveyard;
 		this.graveyard.getListCredentials().objectsPerRow = 1;
-		this.graveyard.getListCredentials().rearrangeTypeEnum = RearrangeTypeEnum.PIVOT;
+		this.graveyard.getListCredentials().gapBetweenComponents.y = Credentials.INSTANCE.dCard.x
+				* 0.376;
 
 	}
 

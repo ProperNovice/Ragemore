@@ -18,12 +18,11 @@ public class JUnit extends AGameState {
 //		Model.INSTANCE.drawEncounter();
 //
 //		addCardsToQuests(2, 1);
-//		addCardsToParty(8);
+//		addCardsToParty(3);
 //		addCardsToQuestsFinished(9);
 //		addCardsToGraveyard(2);
 //		putSelectedCardsToTheBottomOfTheDeck();
 
-//		Flow.INSTANCE.getFlow().addLast(ActionFight.class);
 		Flow.INSTANCE.getFlow().addLast(StartGame.class);
 		Flow.INSTANCE.proceed();
 
