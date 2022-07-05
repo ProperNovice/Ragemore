@@ -12,13 +12,16 @@ import utils.Interfaces.IImageViewAble;
 
 public class ListImageViewAbles<T> implements Iterable<T> {
 
-	private ArrayListImageView<T> arrayList = new ArrayListImageView<T>(() -> showListSize());
+	private ArrayListImageView<T> arrayList = null;
 	private PanelNumbers panelNumbers = new PanelNumbers();
 	private CoordinatesList<T> coordinates = new CoordinatesList<>(this);
 	private ListCredentials listCredentials = new ListCredentials();
 
 	@SuppressWarnings("unchecked")
 	public ListImageViewAbles() {
+
+		this.arrayList = new ArrayListImageView<T>((ListImageViewAbles<IImageViewAble>) this,
+				() -> showListSize());
 
 		Lists.INSTANCE.lists.addLast((ListImageViewAbles<IImageViewAble>) this);
 		RealTimeDuplicateProtection.INSTANCE.addList(this.arrayList);
