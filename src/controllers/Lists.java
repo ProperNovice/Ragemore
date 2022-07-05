@@ -25,6 +25,7 @@ public enum Lists {
 		this.deck.getListCredentials().coordinatesList = Credentials.INSTANCE.cDeck;
 		this.deck.getListCredentials().rearrangeTypeEnum = RearrangeTypeEnum.STATIC;
 		this.deck.getListCredentials().layerZListEnum = LayerZListEnum.TO_FRONT_FIRST_IMAGEVIEW;
+		this.deck.getListCredentials().showListSize = true;
 
 		// encounter
 
