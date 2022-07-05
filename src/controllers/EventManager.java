@@ -11,6 +11,7 @@ public enum EventManager implements IEventAble {
 
 	public ArrayList<IEventAble> objectAddedToList = new ArrayList<>();
 	public ArrayList<IEventAble> objectRemovedFromList = new ArrayList<>();
+	public ArrayList<IEventAble> gameStateChange = new ArrayList<>();
 
 	private EventManager() {
 
@@ -31,6 +32,14 @@ public enum EventManager implements IEventAble {
 
 		for (IEventAble iEventAble : this.objectRemovedFromList)
 			iEventAble.eventObjectRemovedFromList(list, object);
+
+	}
+
+	@Override
+	public void eventGameStateChange() {
+
+		for (IEventAble iEventAble : this.gameStateChange)
+			iEventAble.eventGameStateChange();
 
 	}
 

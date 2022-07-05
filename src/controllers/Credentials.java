@@ -1,5 +1,11 @@
 package controllers;
 
+import gameStates.AGameState;
+import gameStates.EndGameLost;
+import gameStates.EndGameWon;
+import gameStates.JUnit;
+import gameStates.RestartGame;
+import gameStates.StartGame;
 import utils.ArrayList;
 import utils.Background;
 import utils.Enums.RearrangeTypeEnum;
@@ -19,6 +25,8 @@ public enum Credentials {
 	public Vector2 cTextPanel;
 	public ArrayList<Class<?>> lineCastExcludeList = new ArrayList<Class<?>>();
 	public RearrangeTypeEnum rearrangeTypeEnumText = RearrangeTypeEnum.LINEAR;
+	public ArrayList<Class<? extends AGameState>> gameStatesExcludedToFireEvent = new ArrayList<>();
+
 	public Vector2 dCard;
 	public Vector2 cDeck, cEncounter, cQuestLeft, cQuestRight, cQuestsFinished, cGraveyard;
 	public Vector2 selectCardRatioPosition = new Vector2(0.2, 0.88);
@@ -34,6 +42,14 @@ public enum Credentials {
 		this.dFrame = new Vector2(1920, 1368);
 		this.dGapBetweenComponents = new Vector2(4, 4);
 		this.dGapBetweenComponentsLineCast = this.dGapBetweenComponents;
+
+		// game states excluded
+
+		this.gameStatesExcludedToFireEvent.addLast(JUnit.class);
+		this.gameStatesExcludedToFireEvent.addLast(EndGameWon.class);
+		this.gameStatesExcludedToFireEvent.addLast(EndGameLost.class);
+		this.gameStatesExcludedToFireEvent.addLast(StartGame.class);
+		this.gameStatesExcludedToFireEvent.addLast(RestartGame.class);
 
 		// d card
 

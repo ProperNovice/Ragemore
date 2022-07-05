@@ -1,51 +1,28 @@
 package models;
 
+import controllers.EventManager;
 import controllers.Lists;
 import controllers.Model;
 import controllers.Party;
 import enums.ESuit;
 import gameStates.AEndGame;
-import gameStates.AGameState;
 import gameStates.EndGameLost;
 import gameStates.EndGameWon;
-import gameStates.JUnit;
-import gameStates.RestartGame;
-import gameStates.StartGame;
-import utils.AnimationTimerFX;
-import utils.ArrayList;
+import interfaces.IEventAble;
 import utils.Flow;
 import utils.HashMap;
 import utils.IntegerNumber;
-import utils.Interfaces.IUpdateAble;
 
-public enum WinLoseConditions implements IUpdateAble {
+public enum WinLoseConditions implements IEventAble {
 
 	INSTANCE;
 
-	private ArrayList<Class<? extends AGameState>> gameStatesExcluded = null;
-
 	private WinLoseConditions() {
-
-		AnimationTimerFX.INSTANCE.updateEachFrame(this);
-
-		this.gameStatesExcluded = new ArrayList<>();
-
-		this.gameStatesExcluded.addLast(JUnit.class);
-		this.gameStatesExcluded.addLast(EndGameWon.class);
-		this.gameStatesExcluded.addLast(EndGameLost.class);
-		this.gameStatesExcluded.addLast(StartGame.class);
-		this.gameStatesExcluded.addLast(RestartGame.class);
-
+		EventManager.INSTANCE.gameStateChange.addLast(this);
 	}
 
 	@Override
-	public void update() {
-
-		if (Flow.INSTANCE.getGameStateCurrent() == null)
-			return;
-
-		if (this.gameStatesExcluded.contains(Flow.INSTANCE.getGameStateCurrent().getClass()))
-			return;
+	public void eventGameStateChange() {
 
 		if (gameWon())
 			handleEndGame(EndGameWon.class);
@@ -55,7 +32,7 @@ public enum WinLoseConditions implements IUpdateAble {
 	}
 
 	private void handleEndGame(Class<? extends AEndGame> classObject) {
-		Flow.INSTANCE.executeGameState(classObject);
+		Flow.INSTANCE.getFlow().addFirst(classObject);
 	}
 
 	private boolean gameWon() {

@@ -2,6 +2,8 @@ package utils;
 
 import java.lang.reflect.InvocationTargetException;
 
+import controllers.Credentials;
+import controllers.EventManager;
 import gameStates.AGameState;
 
 public enum Flow {
@@ -21,6 +23,9 @@ public enum Flow {
 			Logger.INSTANCE.logNewLine("flow is empty");
 			return;
 		}
+
+		if (!Credentials.INSTANCE.gameStatesExcludedToFireEvent.contains(this.flow.getFirst()))
+			EventManager.INSTANCE.eventGameStateChange();
 
 		Class<? extends AGameState> aGameStateClass = this.flow.removeFirst();
 
