@@ -19,7 +19,7 @@ public enum Credentials {
 	public final String primaryStageTitle = "Ragemore", numbersImageViewColor = "black";
 	public final boolean colliderVisibility = true;
 	public final double gapBetweenBorders = 25, textHeight = 50,
-			selectEventHandlerAbleDimension = 100, listQuantityRatioDimensions = 0.25,
+			selectEventHandlerAbleDimension = 100, listQuantityRatioDimensions = 0.35,
 			animationStep = 4;
 	public Vector2 dFrame, dGapBetweenComponents, dGapBetweenComponentsLineCast;
 	public Vector2 cTextPanel;
