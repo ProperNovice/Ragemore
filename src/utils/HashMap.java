@@ -74,6 +74,10 @@ public class HashMap<K, V> implements Iterable<K> {
 		return this.keys.size();
 	}
 
+	public boolean isEmpty() {
+		return size() == 0;
+	}
+
 	public void print() {
 
 		Logger.INSTANCE.logNewLine("/*");

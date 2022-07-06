@@ -9,7 +9,6 @@ import utils.ArrayList;
 import utils.Flow;
 import utils.HashMap;
 import utils.IntegerNumber;
-import utils.ListImageViewAbles;
 import utils.SelectImageViewManager;
 import utils.ShutDown;
 
@@ -29,46 +28,34 @@ public class ActionRecruit extends AGameState {
 
 	private void executeRecruit() {
 
-		SelectImageViewManager.INSTANCE.releaseSelectImageViews();
-
-		ArrayList<ListImageViewAbles<ACard>> lists = new ArrayList<>();
-		lists.addLast(Lists.INSTANCE.deck);
-		lists.addLast(Lists.INSTANCE.encounter);
-		lists.addLast(Lists.INSTANCE.questLeft);
-		lists.addLast(Lists.INSTANCE.questRight);
-
-		for (ACard card : this.cardsMonsterSelected) {
-
-			for (ListImageViewAbles<ACard> list : lists)
-				if (list.getArrayList().contains(card))
-					list.getArrayList().remove(card);
-
-			Party.INSTANCE.addCard(card);
-
-		}
-
+		this.cardPartySelected.reverseSelectImageView();
 		Party.INSTANCE.removeCard(this.cardPartySelected);
 		Lists.INSTANCE.deck.getArrayList().addLast(this.cardPartySelected);
 
-		for (ListImageViewAbles<ACard> list : lists)
-			list.relocateImageViews();
+		Lists.INSTANCE.deck.relocateImageViews();
 		Party.INSTANCE.relocate();
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void executeTextOption(EText eText) {
 
 		switch (eText) {
 
 		case CONTINUE:
+
 			executeRecruit();
-			Flow.INSTANCE.getFlow().addFirst(CheckQuestsForConsecutiveSymbols.class);
+			Flow.INSTANCE.getFlow().addAllFirst(PutSelectedCardsToParty.class,
+					CheckQuestsForConsecutiveSymbols.class);
+
 			break;
 
 		case CANCEL:
+
 			SelectImageViewManager.INSTANCE.releaseSelectImageViews();
 			Flow.INSTANCE.getFlow().addFirst(ChooseAction.class);
+
 			break;
 
 		default:

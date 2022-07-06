@@ -17,6 +17,7 @@ public enum EText {
 	FIGHT_INDICATOR("Fight", TextTypeEnum.INDICATOR), CANCEL("Cancel", TextTypeEnum.OPTION),
 	DISCARD_QUEST("Discard quest", TextTypeEnum.INDICATOR),
 	PUT_CARD_TO_BOTTOM("Put card to bottom", TextTypeEnum.INDICATOR),
+	PUT_CARD_TO_PARTY("Put card to party", TextTypeEnum.INDICATOR),
 	RESOLVE_ABILITY("Resolve ability", TextTypeEnum.OPTION),
 	CHOOSE_QUEST_PILE("Choose quest pile", TextTypeEnum.INDICATOR),
 	LEFT("Left", TextTypeEnum.OPTION), RIGHT("Right", TextTypeEnum.OPTION),
