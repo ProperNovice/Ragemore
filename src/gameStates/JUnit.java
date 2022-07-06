@@ -3,7 +3,6 @@ package gameStates;
 import controllers.Lists;
 import controllers.Model;
 import controllers.Party;
-import enums.EDifficultyLevel;
 import models.ACard;
 import models.ObserverFlipSide;
 import models.WinLoseConditions;
@@ -18,18 +17,19 @@ public class JUnit extends AGameState {
 		WinLoseConditions.INSTANCE.toString();
 		ObserverFlipSide.INSTANCE.toString();
 
-		Model.INSTANCE.setEDifficultyLevel(EDifficultyLevel.NORMAL);
+//		Model.INSTANCE.setEDifficultyLevel(EDifficultyLevel.NORMAL);
 
 //		Model.INSTANCE.drawEncounter();
 //		putSelectedCardsToTheBottomOfTheDeck();
 
-		addCardsToQuests(3, 3);
-		addCardsToParty(11);
-		addCardsToQuestsFinished(0);
-		addCardsToGraveyard(0);
+//		addCardsToQuests(3, 3);
+//		addCardsToParty(11);
+//		addCardsToQuestsFinished(0);
+//		addCardsToGraveyard(0);
 
-		Flow.INSTANCE.getFlow().addLast(StartNewTurn.class);
-//		Flow.INSTANCE.getFlow().addLast(StartGame.class);
+//		Flow.INSTANCE.getFlow().addLast(StartNewTurn.class);
+
+		Flow.INSTANCE.getFlow().addLast(StartGame.class);
 		Flow.INSTANCE.proceed();
 
 	}
