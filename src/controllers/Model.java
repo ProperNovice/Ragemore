@@ -98,9 +98,6 @@ public enum Model {
 		Lists.INSTANCE.deck.getArrayList().shuffle();
 		Lists.INSTANCE.deck.relocateImageViews();
 
-		for (ACard card : Lists.INSTANCE.deck)
-			card.flipSideEnemy();
-
 		// set up quests
 
 		setUpQuest(Lists.INSTANCE.questLeft, 3, true);
@@ -117,7 +114,6 @@ public enum Model {
 		for (int counter = 1; counter <= 3; counter++) {
 
 			ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
-			card.flipSideHero();
 			Party.INSTANCE.addCard(card);
 
 		}

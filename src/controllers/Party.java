@@ -79,6 +79,8 @@ public enum Party {
 
 	public void addCard(ACard card) {
 
+		EventManager.INSTANCE.eventObjectAddedToParty(card);
+
 		ESuit eSuitCardToAdd = card.getSideHero().getESuit();
 		boolean added = false;
 
@@ -105,6 +107,8 @@ public enum Party {
 	}
 
 	public void removeCard(ACard card) {
+
+		EventManager.INSTANCE.eventObjectRemovedFromParty(card);
 
 		for (ListImageViewAbles<ACard> list : this.lists.clone()) {
 

@@ -53,7 +53,6 @@ public class ActionFight extends AGameState {
 	private void resolveWin() {
 
 		ACard card = Lists.INSTANCE.encounter.getArrayList().removeRandom();
-		card.flipSideHero();
 		Party.INSTANCE.addCard(card);
 		Party.INSTANCE.relocate();
 
@@ -78,14 +77,12 @@ public class ActionFight extends AGameState {
 	private void resolveLoss() {
 
 		ACard cardEncounter = Lists.INSTANCE.encounter.getArrayList().removeRandom();
-		cardEncounter.flipSideHero();
 		Party.INSTANCE.addCard(cardEncounter);
 
 		if (!this.cardPartyNoPlusSelected.isEmpty()) {
 
 			for (ACard card : this.cardPartyNoPlusSelected) {
 
-				card.flipSideEnemy();
 				Party.INSTANCE.removeCard(card);
 				Lists.INSTANCE.graveyard.getArrayList().addLast(card);
 
@@ -97,7 +94,6 @@ public class ActionFight extends AGameState {
 
 			for (ACard card : this.cardPartyPlusSelected) {
 
-				card.flipSideEnemy();
 				Party.INSTANCE.removeCard(card);
 				Lists.INSTANCE.graveyard.getArrayList().addLast(card);
 

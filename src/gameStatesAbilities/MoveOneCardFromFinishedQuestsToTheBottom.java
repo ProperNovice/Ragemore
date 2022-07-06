@@ -28,8 +28,6 @@ public class MoveOneCardFromFinishedQuestsToTheBottom extends AGameState {
 
 		concealText();
 
-		card.flipSideEnemy();
-
 		Lists.INSTANCE.questsFinished.getArrayList().remove(card);
 		Lists.INSTANCE.questsFinished.relocateImageViews();
 

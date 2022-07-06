@@ -187,8 +187,6 @@ public class ActionExplore extends AGameState {
 		Party.INSTANCE.removeCard(this.cardPartySelected);
 		Party.INSTANCE.relocate();
 
-		this.cardPartySelected.flipSideEnemy();
-
 		Lists.INSTANCE.deck.getArrayList().addLast(this.cardPartySelected);
 		Lists.INSTANCE.deck.relocateImageViews();
 

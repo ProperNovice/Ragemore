@@ -4,6 +4,7 @@ import controllers.Lists;
 import controllers.Model;
 import controllers.Party;
 import models.ACard;
+import models.ObserverFlipSide;
 import models.WinLoseConditions;
 import utils.ArrayList;
 import utils.Flow;
@@ -14,6 +15,7 @@ public class JUnit extends AGameState {
 	public void execute() {
 
 		WinLoseConditions.INSTANCE.toString();
+		ObserverFlipSide.INSTANCE.toString();
 //
 //		Model.INSTANCE.drawEncounter();
 //
@@ -69,7 +71,6 @@ public class JUnit extends AGameState {
 		for (int counter = 1; counter <= cardsToAdd; counter++) {
 
 			ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
-			card.flipSideHero();
 			Party.INSTANCE.addCard(card);
 			Party.INSTANCE.relocate();
 

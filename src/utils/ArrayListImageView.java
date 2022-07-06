@@ -24,14 +24,6 @@ public class ArrayListImageView<T> extends ArrayList<T> {
 	}
 
 	@Override
-	public void addFirst(T element) {
-
-		super.addFirst(element);
-		objectAddedToList((IImageViewAble) element);
-
-	}
-
-	@Override
 	public void addLast(T element) {
 
 		super.addLast(element);
@@ -61,16 +53,6 @@ public class ArrayListImageView<T> extends ArrayList<T> {
 	public T remove(T t) {
 
 		super.remove(t);
-		objectRemovedFromList((IImageViewAble) t);
-
-		return t;
-
-	}
-
-	@Override
-	public T removeRandom() {
-
-		T t = super.removeRandom();
 		objectRemovedFromList((IImageViewAble) t);
 
 		return t;

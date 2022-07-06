@@ -36,7 +36,6 @@ public class GainNextCardIfItIsCrossOrRoad extends AGameState {
 	protected void executeTextOption(EText eText) {
 
 		ACard card = Lists.INSTANCE.deck.getArrayList().removeFirst();
-		card.flipSideHero();
 		Party.INSTANCE.addCard(card);
 		Party.INSTANCE.relocate();
 

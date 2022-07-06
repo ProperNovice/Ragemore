@@ -4,7 +4,6 @@ import controllers.Lists;
 import controllers.Model;
 import enums.EDifficultyLevel;
 import enums.EText;
-import models.ACard;
 import utils.Flow;
 
 public class StartGame extends AGameState {
@@ -15,9 +14,6 @@ public class StartGame extends AGameState {
 		Lists.INSTANCE.loadListsOriginal();
 		Lists.INSTANCE.deck.getArrayList().shuffle();
 		Lists.INSTANCE.deck.relocateImageViews();
-
-		for (ACard card : Lists.INSTANCE.deck)
-			card.flipSideEnemy();
 
 		EText.CHOOSE_DIFFICULTY_LEVEL.show();
 		EText.NORMAL.show();

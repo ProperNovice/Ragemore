@@ -33,18 +33,18 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 		this.list.add(index, element);
 	}
 
-	public void addFirst(T element) {
+	public final void addFirst(T element) {
 		add(0, element);
 	}
 
-	public void addFirst(T element, int times) {
+	public final void addFirst(T element, int times) {
 
 		for (int counter = 1; counter <= times; counter++)
 			addFirst(element);
 
 	}
 
-	public void addAllFirst(ArrayList<T> list) {
+	public final void addAllFirst(ArrayList<T> list) {
 
 		list.reverse();
 
@@ -54,7 +54,7 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void addAllFirst(T... list) {
+	public final void addAllFirst(T... list) {
 		addAllFirst(new ArrayList<>(list));
 	}
 
@@ -62,14 +62,14 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 		this.list.add(element);
 	}
 
-	public void addLast(T element, int times) {
+	public final void addLast(T element, int times) {
 
 		for (int counter = 1; counter <= times; counter++)
 			addLast(element);
 
 	}
 
-	public void addAllLast(ArrayList<T> list) {
+	public final void addAllLast(ArrayList<T> list) {
 
 		for (T t : list)
 			addLast(t);
@@ -77,43 +77,37 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void addAllLast(T... list) {
+	public final void addAllLast(T... list) {
 
 		for (T t : list)
 			addLast(t);
 
 	}
 
-	public ArrayList<T> clear() {
-
-		ArrayList<T> list = new ArrayList<>();
+	public final void clear() {
 
 		while (!isEmpty())
-			list.addLast(removeFirst());
-
-		this.list.clear();
-
-		return list;
+			removeRandom();
 
 	}
 
-	public boolean contains(Object o) {
+	public final boolean contains(Object o) {
 		return this.list.contains(o);
 	}
 
-	public T get(int index) {
+	public final T get(int index) {
 		return this.list.get(index);
 	}
 
-	public int indexOf(Object o) {
+	public final int indexOf(Object o) {
 		return this.list.indexOf(o);
 	}
 
-	public boolean isEmpty() {
+	public final boolean isEmpty() {
 		return this.list.isEmpty();
 	}
 
-	public boolean isMaxedCapacity() {
+	public final boolean isMaxedCapacity() {
 
 		if (this.capacity == -1)
 			return false;
@@ -122,7 +116,7 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 
 	}
 
-	public boolean isOverCapacity() {
+	public final boolean isOverCapacity() {
 
 		if (this.capacity == -1)
 			return false;
@@ -131,7 +125,7 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 
 	}
 
-	public int getCapacity() {
+	public final int getCapacity() {
 		return this.capacity;
 	}
 
@@ -146,7 +140,7 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 
 	}
 
-	public void shuffle() {
+	public final void shuffle() {
 
 		java.util.ArrayList<T> listOriginal = new java.util.ArrayList<>(this.list);
 		this.list.clear();
@@ -157,36 +151,36 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 
 	}
 
-	public T getFirst() {
+	public final T getFirst() {
 		return this.list.get(0);
 	}
 
-	public T removeFirst() {
+	public final T removeFirst() {
 		return remove(0);
 	}
 
-	public T getLast() {
+	public final T getLast() {
 		return this.list.get(this.list.size() - 1);
 	}
 
-	public T removeLast() {
+	public final T removeLast() {
 		return remove(this.list.size() - 1);
 	}
 
-	public T getRandom() {
+	public final T getRandom() {
 		return this.list.get(Random.INSTANCE.getRandomNumber(0, this.list.size() - 1));
 	}
 
-	public T removeRandom() {
+	public final T removeRandom() {
 		int randomIndex = Random.INSTANCE.getRandomNumber(0, this.list.size() - 1);
-		return this.list.remove(randomIndex);
+		return remove(randomIndex);
 	}
 
 	public void set(int index, T element) {
 		this.list.set(index, element);
 	}
 
-	public void replace(T elementOld, T elementNew) {
+	public final void replace(T elementOld, T elementNew) {
 
 		if (!this.list.contains(elementOld))
 			ShutDown.INSTANCE.execute();
@@ -194,25 +188,25 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 		set(this.list.indexOf(elementOld), elementNew);
 	}
 
-	public int size() {
+	public final int size() {
 		return this.list.size();
 	}
 
-	public void reverse() {
+	public final void reverse() {
 		Collections.reverse(this.list);
 	}
 
-	public void setCapacity(int capacity) {
+	public final void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
 
 	@Override
-	public Iterator<T> iterator() {
+	public final Iterator<T> iterator() {
 		return this.list.iterator();
 	}
 
 	@Override
-	public ArrayList<T> clone() {
+	public final ArrayList<T> clone() {
 
 		java.util.ArrayList<T> arrayList = new java.util.ArrayList<>(this.list);
 		ArrayList<T> arrayListToReturn = new ArrayList<T>(arrayList, this.capacity);
@@ -222,27 +216,39 @@ public class ArrayList<T> implements Iterable<T>, ISaveLoadStateAble {
 	}
 
 	@Override
-	public void saveOriginal() {
+	public final void saveOriginal() {
+
 		this.listOriginal.clear();
 		this.listOriginal.addAll(this.list);
+
 	}
 
 	@Override
 	public void loadOriginal() {
-		this.list.clear();
-		this.list.addAll(this.listOriginal);
+
+		clear();
+
+		for (T t : this.listOriginal)
+			addLast(t);
+
 	}
 
 	@Override
-	public void saveState() {
+	public final void saveState() {
+
 		this.listState.clear();
 		this.listState.addAll(this.list);
+
 	}
 
 	@Override
 	public void loadState() {
-		this.list.clear();
-		this.list.addAll(this.listState);
+
+		clear();
+
+		for (T t : this.listState)
+			addLast(t);
+
 	}
 
 }

@@ -39,8 +39,6 @@ public class ActionRecruit extends AGameState {
 
 		for (ACard card : this.cardsMonsterSelected) {
 
-			card.flipSideHero();
-
 			for (ListImageViewAbles<ACard> list : lists)
 				if (list.getArrayList().contains(card))
 					list.getArrayList().remove(card);
@@ -50,7 +48,6 @@ public class ActionRecruit extends AGameState {
 		}
 
 		Party.INSTANCE.removeCard(this.cardPartySelected);
-		this.cardPartySelected.flipSideEnemy();
 		Lists.INSTANCE.deck.getArrayList().addLast(this.cardPartySelected);
 
 		for (ListImageViewAbles<ACard> list : lists)
